@@ -1,0 +1,11 @@
+# Dependencias
+node_modules/
+.DS_Store
+
+# Archivos de entorno (Seguridad: aquí irán tus llaves de la IA de WhatsApp)
+.env
+.env.local
+
+# Carpetas de compilación
+dist/
+build/
