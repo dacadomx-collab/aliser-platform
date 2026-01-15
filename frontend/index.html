@@ -24,8 +24,12 @@
   
   <title>ALISER - Tienda de Autoservicio | Baja California Sur</title>
   
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
   <!-- Hojas de Estilo -->
   <link rel="stylesheet" href="src/css/main.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
   
   <!-- Schema.org JSON-LD: LocalBusiness -->
   <script type="application/ld+json">
@@ -67,50 +71,57 @@
     </script>
 </head>
 <body>
-  <!-- Header y Navegación -->
-  <header class="main-header">
-    <input type="checkbox" id="menu-toggle" style="display:none;"/>
-
-    <!-- Logo y Eslogan -->
-    <div class="header-brand">
-      <a href="/" class="header-logo" aria-label="ALISER - Inicio">
-        <img src="../assets/img/logo/logo.png" alt="ALISER - Tienda de Autoservicio" class="logo-img">
-      </a>
-      <p class="header-slogan">La única cadena de SudCalifornia</p>
+  <!-- Header Top (Zona Superior Blanca) -->
+  <header class="header-top">
+    <div class="header-top-container">
+      <div class="header-brand">
+        <a href="/" class="header-logo" aria-label="ALISER - Inicio">
+          <img src="assets/img/logo/logo.png" alt="ALISER - Tienda de Autoservicio" class="logo-img">
+        </a>
+        <p class="header-slogan">LA ÚNICA CADENA DE SUDCALIFORNIA</p>
+      </div>
     </div>
+  </header>
 
-    <!-- Burger Menu (Mobile) -->
-    <label id="trigger" for="menu-toggle" class="burger-trigger" aria-label="Abrir menú de navegación"></label>
-    <label id="burger" for="menu-toggle" class="burger-icon" aria-hidden="true">
-      <span></span>
-    </label>
-
-    <!-- Menú Mobile (Burger Menu) -->
-    <ul id="menu" class="mobile-menu" role="navigation" aria-label="Menú de navegación móvil">
-      <li><a href="/">Inicio</a></li>
-      <li><a href="/bolsa-trabajo">Bolsa de Trabajo</a></li>
-      <li><a href="/terrenos">Terrenos</a></li>
-      <li><a href="/promociones">Promociones</a></li>
-    </ul>
-
-    <!-- Menú Desktop -->
-    <nav class="desktop-nav" role="navigation" aria-label="Menú de navegación de escritorio">
-      <ul class="desktop-nav-list">
-        <li class="desktop-nav-item">
-          <a href="/" class="desktop-nav-link">Inicio</a>
+  <!-- Barra de Navegación (Verde ALISER) -->
+  <nav class="nav-bar" role="navigation" aria-label="Navegación principal">
+    <div class="nav-bar-container">
+      <input type="checkbox" id="menu-toggle" style="display:none;"/>
+      
+      <!-- Menú Desktop -->
+      <ul class="nav-menu">
+        <li class="nav-item nav-item-home">
+          <a href="/" class="nav-link nav-link-home" aria-label="Inicio">
+            <i class="fas fa-home" aria-hidden="true"></i>
+            <span>Inicio</span>
+          </a>
         </li>
-        <li class="desktop-nav-item">
-          <a href="/bolsa-trabajo" class="desktop-nav-link">Bolsa de Trabajo</a>
+        <li class="nav-item">
+          <a href="/promociones" class="nav-link">Promociones</a>
         </li>
-        <li class="desktop-nav-item">
-          <a href="/terrenos" class="desktop-nav-link">Terrenos</a>
+        <li class="nav-item">
+          <a href="/terrenos" class="nav-link">Terrenos</a>
         </li>
-        <li class="desktop-nav-item">
-          <a href="/promociones" class="desktop-nav-link">Promociones</a>
+        <li class="nav-item nav-item-right">
+          <a href="/bolsa-trabajo" class="nav-link">Trabaja con Nosotros</a>
         </li>
       </ul>
-    </nav>
-  </header>
+
+      <!-- Burger Menu (Mobile) -->
+      <label id="trigger" for="menu-toggle" class="burger-trigger" aria-label="Abrir menú de navegación"></label>
+      <label id="burger" for="menu-toggle" class="burger-icon" aria-hidden="true">
+        <span></span>
+      </label>
+
+      <!-- Menú Mobile (Burger Menu) -->
+      <ul id="menu" class="mobile-menu" role="navigation" aria-label="Menú de navegación móvil">
+        <li><a href="/"><i class="fas fa-home" aria-hidden="true"></i> Inicio</a></li>
+        <li><a href="/promociones">Promociones</a></li>
+        <li><a href="/terrenos">Terrenos</a></li>
+        <li><a href="/bolsa-trabajo">Trabaja con Nosotros</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <!-- Hero Section -->
   <section id="hero" class="hero">
