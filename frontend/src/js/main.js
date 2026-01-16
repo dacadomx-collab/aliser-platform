@@ -20,6 +20,7 @@
     // Aquí se inicializarán los módulos principales
     initNavigation();
     initAccessibility();
+    initScrollHeader();
   }
 
   /**
@@ -65,6 +66,45 @@
    */
   function initAccessibility() {
     // TODO: Implementar mejoras de accesibilidad
+  }
+
+  /**
+   * Inicializa el efecto de scroll en el header
+   * Implementa histéresis para evitar parpadeo (flickering)
+   * Activación: 100px | Desactivación: 80px
+   */
+  function initScrollHeader() {
+    const SCROLL_THRESHOLD_ACTIVATE = 100;  // Activar .scrolled al pasar 100px
+    const SCROLL_THRESHOLD_DEACTIVATE = 80; // Desactivar .scrolled al volver a 80px
+    const body = document.body;
+    let isScrolled = false;
+
+    function handleScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Lógica de histéresis: "sorda" a micro-cambios
+      if (!isScrolled && scrollTop > SCROLL_THRESHOLD_ACTIVATE) {
+        // Activar solo si estamos por encima del umbral de activación
+        body.classList.add('scrolled');
+        isScrolled = true;
+      } else if (isScrolled && scrollTop < SCROLL_THRESHOLD_DEACTIVATE) {
+        // Desactivar solo si estamos por debajo del umbral de desactivación
+        body.classList.remove('scrolled');
+        isScrolled = false;
+      }
+    }
+
+    // Throttle con requestAnimationFrame para mejor performance
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+      if (scrollTimeout) {
+        window.cancelAnimationFrame(scrollTimeout);
+      }
+      scrollTimeout = window.requestAnimationFrame(handleScroll);
+    }, { passive: true });
+
+    // Verificar posición inicial
+    handleScroll();
   }
 
   /**
