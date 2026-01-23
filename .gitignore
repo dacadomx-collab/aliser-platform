@@ -1,0 +1,110 @@
+# ============================================
+# ALISER Platform - .gitignore
+# ============================================
+
+# Dependencias
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Archivos de Entorno
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+# Sistema Operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDEs y Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Build y Distribución
+dist/
+build/
+*.tgz
+*.tar.gz
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+out/
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Base de Datos
+*.sqlite
+*.sqlite3
+*.db
+*.db3
+dump.rdb
+
+# Archivos Temporales
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+# Uploads y Media (si no se versionan)
+uploads/
+media/
+public/uploads/
+
+# Certificados y Claves
+*.pem
+*.key
+*.crt
+*.cert
+secrets/
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Misceláneos
+.vercel
+.netlify
+.sass-cache/
+*.css.map
+*.js.map

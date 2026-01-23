@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Meta Tags SEO -->
+  <meta name="description" content="ALISER - Tienda de autoservicio en Baja California Sur. Tu supermercado de confianza con productos frescos, promociones y servicios.">
+  <meta name="keywords" content="supermercado, autoservicio, Baja California Sur, BCS, La Paz, tienda, ALISER">
+  <meta name="author" content="ALISER">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ALISER - Tienda de Autoservicio">
+  <meta property="og:description" content="Tu supermercado de confianza en Baja California Sur">
+  <meta property="og:locale" content="es_MX">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ALISER - Tienda de Autoservicio">
+  <meta name="twitter:description" content="Tu supermercado de confianza en Baja California Sur">
+  
+  <title>ALISER - Tienda de Autoservicio | Baja California Sur</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  
+  <!-- Hojas de Estilo -->
+  <link rel="stylesheet" href="src/css/main.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  
+  <!-- Schema.org JSON-LD: LocalBusiness -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ALISER",
+      "image": "https://aliser.mx/assets/img/logo.webp",
+      "description": "Tienda de autoservicio líder en Baja California Sur, especialistas en abarrotes, carnes y distribución hotelera.",
+      "url": "https://aliser.mx",
+      "telephone": "+521234567890",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Blvd. Forjadores de Sudcalifornia",
+        "addressLocality": "La Paz",
+        "addressRegion": "Baja California Sur",
+        "postalCode": "23000",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "24.1422",
+        "longitude": "-110.3128"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "07:00",
+          "closes": "22:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/AliserMX",
+        "https://www.instagram.com/alisermx"
+      ]
+    }
+    </script>
+</head>
+<body>
+  <!-- Header Top (Nivel Superior - Blanco) -->
+  <header class="header-top">
+    <div class="header-top-container">
+      <div class="header-brand">
+        <a href="/" class="header-logo" aria-label="ALISER - Inicio">
+          <img src="assets/img/logo/logo.png" alt="ALISER - Tienda de Autoservicio" class="logo-img logo-img-top">
+        </a>
+        <p class="header-slogan">LA ÚNICA CADENA DE SUDCALIFORNIA</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Nav Bar (Nivel Inferior - Verde #00843D) -->
+  <nav class="nav-bar" role="navigation" aria-label="Navegación principal">
+    <div class="nav-bar-container">
+      <input type="checkbox" id="menu-toggle"/>
+      
+      <!-- Menú Desktop -->
+      <ul class="nav-menu">
+        <li class="nav-item nav-item-home">
+          <a href="/" class="nav-link nav-link-home" aria-label="Inicio">
+            <i class="fas fa-home" aria-hidden="true"></i>
+            <span>Inicio</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/promociones" class="nav-link">Promociones</a>
+        </li>
+        <li class="nav-item">
+          <a href="/terrenos" class="nav-link">Terrenos</a>
+        </li>
+        <!-- Logo Móvil (aparece al hacer scroll) -->
+        <li class="nav-item nav-logo-mobile-wrapper">
+          <a href="/" class="nav-logo-mobile" aria-label="ALISER - Inicio">
+            <img src="assets/img/logo/logo.png" alt="ALISER" class="logo-img logo-img-nav">
+          </a>
+          <!-- Eslogan en Nav-Bar (aparece al hacer scroll) -->
+          <p class="nav-slogan">LA ÚNICA CADENA DE SUDCALIFORNIA</p>
+        </li>
+        <li class="nav-item nav-item-right">
+          <a href="/bolsa-trabajo" class="nav-link">Trabaja con Nosotros</a>
+        </li>
+      </ul>
+
+      <!-- Burger Menu (Mobile) -->
+      <label id="trigger" for="menu-toggle" class="burger-trigger" aria-label="Abrir menú de navegación"></label>
+      <label id="burger" for="menu-toggle" class="burger-icon" aria-hidden="true">
+        <span></span>
+      </label>
+
+      <!-- Menú Mobile (Burger Menu) -->
+      <ul id="menu" class="mobile-menu" role="navigation" aria-label="Menú de navegación móvil">
+        <li><a href="/"><i class="fas fa-home" aria-hidden="true"></i> Inicio</a></li>
+        <li><a href="/promociones">Promociones</a></li>
+        <li><a href="/terrenos">Terrenos</a></li>
+        <li><a href="/bolsa-trabajo">Trabaja con Nosotros</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-slider">
+      <div class="hero-slide">
+        <picture>
+          <source srcset="assets/img/hero/hero-mobile.webp" media="(max-width: 767px)" type="image/webp">
+          <source srcset="assets/img/hero/hero-mobile.jpg" media="(max-width: 767px)">
+          <source srcset="assets/img/hero/hero-desktop.webp" type="image/webp">
+          <img src="assets/img/hero/hero-desktop.jpg" alt="ALISER - Tu supermercado de confianza en Baja California Sur" class="hero-image">
+        </picture>
+        <div class="hero-overlay"></div>
+      </div>
+    </div>
+    
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-text">Ofertas de la Quincena</span>
+      </div>
+      <h1 class="hero-title">Tu Supermercado de Confianza</h1>
+      <p class="hero-subtitle">Productos frescos y calidad excepcional en Baja California Sur</p>
+    </div>
+  </section>
+
+  <!-- Contenido Principal -->
+  <main>
+    <!-- Sección Adquisición de Terrenos -->
+    <section id="terrenos" class="terrenos-section">
+      <div class="container">
+        <div class="terrenos-grid">
+          <!-- Columna Izquierda: Flyer Publicitario -->
+          <div class="terrenos-flyer">
+            <div class="flyer-content">
+              <h2 class="flyer-title">¡Buscamos tu terreno!</h2>
+              <div class="flyer-placeholder">
+                <div class="placeholder-icon">🏠</div>
+                <p class="placeholder-text">Espacio para flyer publicitario</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Formulario de Contacto -->
+          <div class="terrenos-form">
+            <div class="form-container">
+              <h3 class="form-title">Contáctanos</h3>
+              <p class="form-subtitle">¿Tienes un terreno disponible? ¡Queremos saber de ti!</p>
+
+              <form class="terrenos-contact-form" action="#" method="POST" aria-label="Formulario de contacto para terrenos">
+                <div class="form-group">
+                  <label for="nombre-completo" class="form-label">Nombre completo</label>
+                  <input
+                    type="text"
+                    id="nombre-completo"
+                    name="nombre"
+                    class="form-input"
+                    placeholder="Tu nombre completo"
+                    required
+                    aria-required="true">
+                </div>
+
+                <div class="form-group">
+                  <label for="ubicacion-terreno" class="form-label">Ubicación del terreno</label>
+                  <input
+                    type="text"
+                    id="ubicacion-terreno"
+                    name="ubicacion"
+                    class="form-input"
+                    placeholder="Ciudad o zona en Baja California Sur"
+                    required
+                    aria-required="true">
+                </div>
+
+                <div class="form-group">
+                  <label for="medidas-terreno" class="form-label">Medidas aproximadas</label>
+                  <input
+                    type="text"
+                    id="medidas-terreno"
+                    name="medidas"
+                    class="form-input"
+                    placeholder="Ej: 500 m², 1 hectárea, etc."
+                    required
+                    aria-required="true">
+                </div>
+
+                <div class="form-group">
+                  <label for="telefono-contacto" class="form-label">Teléfono de contacto</label>
+                  <input
+                    type="tel"
+                    id="telefono-contacto"
+                    name="telefono"
+                    class="form-input"
+                    placeholder="+52 (612) 123-4567"
+                    required
+                    aria-required="true">
+                </div>
+
+                <button type="submit" class="form-submit-btn hacker-btn">
+                  <span class="btn-text">Enviar Información</span>
+                  <span class="btn-glow"></span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer" role="contentinfo">
+    <div class="footer-container">
+      <!-- Columna 1: Logo y Misión -->
+      <div class="footer-column footer-brand">
+        <div class="footer-logo">
+          <img src="assets/img/logo/logo.png" alt="ALISER" class="footer-logo-img">
+        </div>
+        <h3 class="footer-brand-title">Nuestra Misión</h3>
+        <p class="footer-brand-text">Proveer productos de calidad superior con el mejor servicio al cliente en Baja California Sur.</p>
+      </div>
+
+      <!-- Columna 2: Enlaces Rápidos -->
+      <div class="footer-column footer-links">
+        <h3 class="footer-column-title">Explorar</h3>
+        <ul class="footer-link-list">
+          <li><a href="/" class="footer-link">Inicio</a></li>
+          <li><a href="/bolsa-trabajo" class="footer-link">Bolsa de Trabajo</a></li>
+          <li><a href="/terrenos" class="footer-link">Adquisición de Terrenos</a></li>
+          <li><a href="/promociones" class="footer-link">Promociones</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Contacto -->
+      <div class="footer-column footer-contact glass-effect">
+        <h3 class="footer-column-title">Contacto</h3>
+        <div class="footer-contact-item">
+          <span class="contact-icon">📞</span>
+          <div>
+            <p class="contact-label">Teléfono</p>
+            <a href="tel:+521234567890" class="contact-link">+52 (612) 123-4567</a>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <span class="contact-icon">✉️</span>
+          <div>
+            <p class="contact-label">Email</p>
+            <a href="mailto:info@aliser.mx" class="contact-link">info@aliser.mx</a>
+          </div>
+        </div>
+        <a href="https://wa.me/521234567890" target="_blank" rel="noopener noreferrer" class="footer-whatsapp-btn">
+          <svg class="whatsapp-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.272-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.946 1.256l-.355.214-3.675-.964.984 3.595-.235.374a9.847 9.847 0 .004 15.705 9.93 9.93 0 005.193 1.523 9.827 9.827 0 005.197-1.523 9.847 9.847 0 001.444-15.666l-.234-.374.964-3.595-3.67.964-.356-.214a9.864 9.864 0 00-4.946-1.256"/>
+          </svg>
+          Contactar por WhatsApp
+        </a>
+      </div>
+
+      <!-- Columna 4: Newsletter -->
+      <div class="footer-column footer-newsletter">
+        <h3 class="footer-column-title">Suscribirse</h3>
+        <p class="newsletter-text">Recibe nuestras ofertas semanales y novedades exclusivas.</p>
+        <form class="newsletter-form" action="#" method="POST" aria-label="Formulario de suscripción">
+          <div class="newsletter-input-group">
+            <input 
+              type="email" 
+              class="newsletter-input" 
+              placeholder="Tu correo electrónico" 
+              required
+              aria-label="Correo electrónico">
+            <button type="submit" class="newsletter-btn hacker-btn">
+              <span class="btn-text">Suscribir</span>
+              <span class="btn-glow"></span>
+            </button>
+          </div>
+        </form>
+        <div class="social-links">
+          <a href="https://www.facebook.com/AliserMX" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/alisermx" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.217.63c-.688.297-1.272.711-1.855 1.294-.583.583-.997 1.167-1.294 1.855-.297.688-.498 1.558-.557 2.836C.008 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.836.297.688.712 1.272 1.295 1.855.583.583 1.167.998 1.854 1.294.728.296 1.598.499 2.877.559 1.28.06 1.687.072 4.947.072s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.837-.559.687-.296 1.271-.711 1.854-1.294.586-.583 1-1.167 1.298-1.855.299-.688.5-1.559.557-2.837.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.279-.262-2.149-.558-2.837-.298-.687-.712-1.271-1.295-1.854-.583-.583-1.167-.997-1.854-1.294-.728-.297-1.598-.499-2.877-.559-1.28-.06-1.687-.072-4.947-.072zm0 2.163c3.259 0 3.667.01 4.947.072 1.195.049 1.842.228 2.27.379.571.214.978.514 1.408.944.43.43.73.837.944 1.408.151.428.33 1.075.379 2.27.06 1.28.072 1.688.072 4.947 0 3.259-.01 3.668-.072 4.948-.049 1.195-.228 1.843-.379 2.27-.214.571-.514.978-.944 1.408-.43.43-.837.73-1.408.944-.428.151-1.075.33-2.27.379-1.28.06-1.688.072-4.947.072-3.259 0-3.668-.01-4.947-.072-1.195-.049-1.843-.228-2.27-.379-.571-.214-.978-.514-1.408-.944-.43-.43-.73-.837-.944-1.408-.151-.428-.33-1.075-.379-2.27-.06-1.28-.072-1.688-.072-4.948 0-3.259.01-3.667.072-4.947.049-1.195.228-1.843.379-2.27.214-.571.514-.978.944-1.408.43-.43.837-.73 1.408-.944.428-.151 1.075-.33 2.27-.379 1.28-.06 1.688-.072 4.947-.072z"/>
+              <circle cx="12" cy="12" r="3.065"/>
+              <path d="M5.338 12a6.662 6.662 0 1113.324 0 6.662 6.662 0 01-13.324 0z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-container">
+        <p class="footer-copyright">&copy; 2026 ALISER. Todos los derechos reservados. | <a href="#" class="footer-link">Política de Privacidad</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="src/js/main.js"></script>
+</body>
+</html>

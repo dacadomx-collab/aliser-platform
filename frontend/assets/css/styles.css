@@ -1,0 +1,771 @@
+/* ============================================
+   ALISER - Header Navigation
+   Estilo inspirado en Nestlé México
+   ============================================ */
+
+/* Variables */
+:root {
+  --nestle-green: #00843D;
+  --green-dark: #006B30;
+  --green-hover: rgba(0, 132, 61, 0.15);
+  --white: #ffffff;
+  --gray-dark: #333333;
+  --gray-medium: #666666;
+  --aliser-sand-secondary: #ECD4A8; /* Arena */
+  --transition-smooth: 0.3s ease-in-out;
+  --transition-morph: 0.4s ease-in-out;
+}
+
+/* Reset para navegación */
+.header-top,
+.nav-bar,
+.header-top-container,
+.nav-bar-container,
+.nav-menu,
+.nav-item,
+.nav-link {
+  box-sizing: border-box;
+}
+
+/* ============================================
+   Header Top (Nivel Superior - Blanco)
+   ============================================ */
+
+.header-top {
+  background-color: var(--white);
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform var(--transition-morph), opacity var(--transition-morph);
+  transform: translateY(0);
+  opacity: 1;
+  min-height: 120px;
+  height: auto;
+  overflow: hidden;
+}
+
+/* Header top oculto al hacer scroll - SOLO transform y opacity */
+/* NO cambiar altura para evitar layout thrashing */
+body.scrolled .header-top {
+  transform: translateY(-100%);
+  opacity: 0;
+  /* Mantener altura original - NO cambiar max-height ni min-height */
+  min-height: 120px;
+  height: auto;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.header-top-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.header-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.25rem 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.header-logo:hover,
+.header-logo:focus {
+  opacity: 0.9;
+  outline: none;
+}
+
+.logo-img {
+  width: auto;
+  display: block;
+  object-fit: contain;
+  transition: height var(--transition-morph), width var(--transition-morph);
+}
+
+.logo-img-top {
+  height: 55px;
+}
+
+.logo-img-nav {
+  height: 0;
+  width: 0;
+  opacity: 0;
+  margin: 0;
+  transition: height var(--transition-morph), width var(--transition-morph), opacity var(--transition-morph), transform var(--transition-morph);
+  transform: scale(0.8);
+}
+
+/* Logo visible en nav-bar al hacer scroll */
+body.scrolled .logo-img-nav {
+  height: 40px;
+  width: auto;
+  opacity: 1 !important;
+  visibility: visible !important;
+  margin: 0;
+  transform: scale(1);
+  display: block !important;
+}
+
+/* Ocultar logo móvil cuando no hay scroll */
+body:not(.scrolled) .logo-img-nav {
+  height: 0;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+  margin: 0;
+  transform: scale(0.8);
+  display: none;
+}
+
+body:not(.scrolled) .nav-logo-mobile-wrapper {
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* NOTA: Los estilos del .header-slogan están centralizados en src/css/main.css */
+/* Este archivo mantiene solo estilos de navegación */
+
+/* ============================================
+   Media Query - Tablets (768px - 1284px)
+   Ocultar eslogan del header-top para evitar amontonamiento
+   ============================================ */
+
+@media (min-width: 768px) and (max-width: 1284px) {
+  /* El eslogan se mantiene visible con tipografía fluida */
+  .header-brand {
+    gap: 1rem;
+  }
+}
+
+/* ============================================
+   Nav Bar (Nivel Inferior - Verde #00843D)
+   ============================================ */
+
+.nav-bar {
+  background-color: var(--nestle-green);
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  overflow: visible; /* Permitir que el brillo shimmer no se corte */
+}
+
+.nav-bar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  min-height: 60px;
+  transition: min-height var(--transition-morph);
+}
+
+/* Aumentar altura en estado scrolled (móvil: 90px) */
+body.scrolled .nav-bar-container {
+  min-height: 80px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Reordenar menú con justify-content cuando hay scroll */
+body.scrolled .nav-menu {
+  justify-content: flex-start;
+  gap: 0.25rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-item-right {
+  margin-left: auto;
+}
+
+/* Ajustar margin-left cuando hay logo móvil */
+body.scrolled .nav-item-right {
+  margin-left: auto;
+}
+
+/* Logo móvil en nav-bar (oculto por defecto) */
+.nav-logo-mobile-wrapper {
+  position: relative;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0 1rem;
+  order: 0; /* Mantener orden natural en flexbox */
+  flex-direction: row;
+  gap: 1rem;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* En móvil, el wrapper debe estar oculto inicialmente */
+@media (max-width: 991px) {
+  .nav-logo-mobile-wrapper {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Mostrar logo móvil en nav-bar al hacer scroll */
+body.scrolled .nav-logo-mobile-wrapper {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* NOTA: El eslogan institucional está centralizado en src/css/main.css */
+/* Este archivo mantiene solo estilos de navegación */
+
+.nav-logo-mobile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 0.25rem;
+  transition: opacity var(--transition-smooth);
+}
+
+.nav-logo-mobile:hover,
+.nav-logo-mobile:focus {
+  opacity: 0.8;
+  outline: none;
+}
+
+/* Forzar visibilidad del logo móvil en estado scrolled */
+body.scrolled .nav-logo-mobile {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 1001;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  min-height: 44px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  transition: all var(--transition-smooth);
+  position: relative;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.nav-link i {
+  font-size: 1.1rem;
+  transition: transform var(--transition-smooth);
+}
+
+.nav-link span {
+  display: inline-block;
+}
+
+/* Efecto Hover - Fondo Oscurecido */
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  border-radius: 4px;
+  transition: opacity var(--transition-smooth);
+  z-index: -1;
+}
+
+.nav-link:hover::before,
+.nav-link:focus::before {
+  opacity: 1;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--white);
+  background-color: rgba(0, 0, 0, 0.15);
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: -2px;
+}
+
+.nav-link:hover i,
+.nav-link:focus i {
+  transform: scale(1.15);
+}
+
+/* ============================================
+   Burger Menu (Mobile)
+   ============================================ */
+
+#menu-toggle {
+  display: none;
+}
+
+.burger-trigger {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+  z-index: 1002;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Centrar burger menu verticalmente siempre */
+body.scrolled .burger-trigger,
+body.scrolled .burger-icon {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.burger-trigger:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.burger-icon {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  z-index: 1003;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: all var(--transition-smooth);
+}
+
+.burger-icon span {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: var(--white);
+  border-radius: 2px;
+  transition: transform var(--transition-morph), opacity var(--transition-smooth);
+}
+
+.burger-icon span::before,
+.burger-icon span::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 3px;
+  background-color: var(--white);
+  border-radius: 2px;
+  transition: transform var(--transition-morph);
+}
+
+.burger-icon span::before {
+  top: -8px;
+}
+
+.burger-icon span::after {
+  bottom: -8px;
+}
+
+#menu-toggle:checked ~ .burger-icon span {
+  transform: rotate(45deg);
+}
+
+#menu-toggle:checked ~ .burger-icon span::before {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+#menu-toggle:checked ~ .burger-icon span::after {
+  bottom: 0;
+  transform: rotate(90deg);
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    var(--nestle-green) 0%,
+    var(--green-dark) 100%
+  );
+  list-style: none;
+  padding: 5rem 2rem 2rem;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+  transform: translateX(-100%);
+  transition: transform var(--transition-smooth);
+  z-index: 999;
+  overflow-y: auto;
+}
+
+#menu-toggle:checked ~ .mobile-menu {
+  display: flex;
+  transform: translateX(0);
+}
+
+.mobile-menu li {
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideInMobile 0.4s ease forwards;
+}
+
+.mobile-menu li:nth-child(1) { animation-delay: 0.1s; }
+.mobile-menu li:nth-child(2) { animation-delay: 0.15s; }
+.mobile-menu li:nth-child(3) { animation-delay: 0.2s; }
+.mobile-menu li:nth-child(4) { animation-delay: 0.25s; }
+
+.mobile-menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  min-height: 48px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+  transition: all var(--transition-smooth);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-menu a i {
+  font-size: 1.2rem;
+  min-width: 24px;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding-left: 2rem;
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: -2px;
+}
+
+/* Overlay para cerrar menú móvil - se maneja con JS si es necesario */
+
+/* ============================================
+   Animaciones
+   ============================================ */
+
+@keyframes slideInMobile {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   Animación de Brillo/Shimmer
+   NOTA: La animación shimmerGlow para el eslogan está en src/css/main.css
+   ============================================ */
+
+/* ============================================
+   Media Queries - Responsive
+   ============================================ */
+
+/* Mobile */
+@media (max-width: 991px) {
+  .header-top-container {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 100px; /* Altura suficiente para logo y eslogan */
+  }
+
+  .header-brand {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .header-logo {
+    margin-top: 8px; /* Separar del borde superior para que se vea completo */
+    padding-top: 0.5rem;
+  }
+
+  .logo-img {
+    height: 45px;
+  }
+
+  .header-slogan {
+    font-size: clamp(0.55rem, 2vw, 0.8rem); /* Tipografía fluida */
+    letter-spacing: 1.5px;
+    margin-top: 0.25rem;
+    display: block; /* Asegurar que sea visible en móvil */
+  }
+
+  .nav-bar-container {
+    padding: 0.75rem 1rem;
+    min-height: 55px;
+    justify-content: flex-end;
+    position: relative;
+  }
+
+  /* Ocultar nav-menu en móvil (solo burger menu visible) */
+  .nav-menu {
+    display: none;
+  }
+
+  .burger-trigger,
+  .burger-icon {
+    display: flex;
+  }
+
+  /* Reconfiguración Móvil (Estado Scrolled) - Cápsula de Identidad */
+  body.scrolled .nav-bar-container {
+    min-height: 110px; /* Altura suficiente para logo + eslogan con respiración */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0.75rem 0; /* Padding vertical para distribuir espacio uniformemente */
+    display: flex !important;
+  }
+
+  /* Ocultar solo los items de navegación (botones de texto), NO el logo/eslogan */
+  body.scrolled .nav-item:not(.nav-logo-mobile-wrapper) {
+    display: none !important;
+  }
+
+  /* Mantener nav-menu visible para que el logo/eslogan no se oculten */
+  body.scrolled .nav-menu {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Logo y eslogan centrados absolutamente en móvil scrolled - Cápsula de Identidad */
+  body.scrolled .nav-logo-mobile-wrapper {
+    position: absolute !important;
+    left: 50%;
+    top: 50%; /* Centrado vertical perfecto */
+    transform: translate(-50%, -50%) !important; /* Centrado perfecto horizontal y vertical */
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* Espacio controlado entre logo y eslogan */
+    margin: 0;
+    padding: 0;
+    z-index: 1001 !important; /* Por encima del fondo verde pero debajo del burger (1002) */
+    width: auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+    will-change: transform, opacity; /* Optimización visual */
+  }
+
+  /* Logo reducido en móvil scrolled - Visible completo sin cortarse */
+  body.scrolled .logo-img-nav,
+  body.scrolled .nav-logo-mobile {
+    height: 35px;
+    width: auto;
+    opacity: 1 !important;
+    visibility: visible !important;
+    margin: 0;
+    padding: 0;
+    transform: scale(1);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    will-change: transform, opacity; /* Optimización visual */
+  }
+
+  /* NOTA: El eslogan institucional está centralizado en src/css/main.css */
+  /* Solo se muestra en header-top, no en nav-bar */
+
+  /* Burger menu en su esquina sin interferir - Móvil Scrolled */
+  body.scrolled .burger-trigger,
+  body.scrolled .burger-icon {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    z-index: 1002;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  .header-top-container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+  }
+
+  .header-brand {
+    flex-direction: row;
+    gap: 1.25rem;
+  }
+
+  .header-slogan {
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+  .header-top-container {
+    padding: 1.25rem 2rem;
+  }
+
+  .logo-img {
+    height: 60px;
+  }
+
+  .header-slogan {
+    font-size: clamp(0.85rem, 1.3vw, 1rem);
+  }
+
+  .nav-bar-container {
+    padding: 0 2rem;
+    min-height: 65px;
+  }
+
+  .nav-link {
+    padding: 1.125rem 1.75rem;
+    font-size: 1rem;
+  }
+
+  .burger-trigger,
+  .burger-icon,
+  .mobile-menu {
+    display: none !important;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  /* Desktop: Eslogan a la derecha del logo cuando scrolled */
+  body.scrolled .nav-logo-mobile-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    margin: 0 1.5rem;
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+  }
+
+  /* NOTA: El eslogan institucional está centralizado en src/css/main.css */
+  /* Solo se muestra en header-top, no en nav-bar */
+
+  /* Logo en desktop scrolled */
+  body.scrolled .logo-img-nav {
+    height: 45px;
+    width: auto;
+    opacity: 1;
+    margin: 0;
+    transform: scale(1);
+  }
+
+  /* Ajustar altura nav-bar en desktop scrolled si es necesario */
+  body.scrolled .nav-bar-container {
+    min-height: 65px;
+  }
+}
+
+/* Desktop Large - Estilos especiales para eslogan */
+@media (min-width: 1400px) {
+  .header-top-container,
+  .nav-bar-container {
+    max-width: 1600px;
+  }
+
+  .header-slogan {
+    font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+    font-weight: 400;
+    letter-spacing: 4px;
+  }
+
+  .nav-link {
+    padding: 1.25rem 2rem;
+  }
+}
+
+/* Desktop Large */
+@media (min-width: 1200px) {
+  .header-top-container,
+  .nav-bar-container {
+    max-width: 1400px;
+  }
+
+  .nav-link {
+    padding: 1.25rem 2rem;
+  }
+
+  /* Logo más grande en desktop XL cuando está en nav-bar */
+  body.scrolled .logo-img-nav {
+    height: 50px;
+  }
+
+  /* NOTA: El eslogan institucional está centralizado en src/css/main.css */
+  /* Solo se muestra en header-top, no en nav-bar */
+}
