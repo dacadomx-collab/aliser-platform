@@ -1,0 +1,427 @@
+/* ============================================
+   ALISER - Panel de Administración
+   Estilos para el módulo de acceso
+   ============================================ */
+
+/* Variables de Identidad Visual ALISER */
+:root {
+  --aliser-green-primary: #256737;    /* Verde Oscuro */
+  --aliser-sand-secondary: #ECD4A8;   /* Arena */
+  --aliser-teal-tertiary: #439184;    /* Verde Azulado */
+  
+  /* Colores Derivados */
+  --aliser-green-dark: #1a4a28;
+  --aliser-green-light: #307e49;
+  --aliser-sand-dark: #c4b895;
+  --aliser-sand-light: #f5e8d0;
+  --aliser-teal-dark: #337a6b;
+  --aliser-teal-light: #54a898;
+  
+  /* Colores Neutrales */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-light: #f5f5f5;
+  --color-gray: #666666;
+  --color-gray-dark: #333333;
+  
+  /* Tipografía */
+  --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Transiciones */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* ============================================
+   Reset y Estilos Base
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  background: linear-gradient(135deg, var(--aliser-green-dark) 0%, var(--aliser-green-primary) 50%, var(--aliser-teal-dark) 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Efecto de fondo animado sutil */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(67, 145, 132, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(236, 212, 168, 0.05) 0%, transparent 50%);
+  animation: backgroundPulse 15s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes backgroundPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ============================================
+   Contenedor Principal
+   ============================================ */
+
+.login-container {
+  width: 100%;
+  max-width: 440px;
+  position: relative;
+  z-index: 1;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Logo y Header
+   ============================================ */
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.login-logo {
+  width: 120px;
+  height: auto;
+  margin: 0 auto 1.5rem;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(37, 103, 55, 0.2));
+  animation: logoFadeIn 0.8s ease-out;
+}
+
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.login-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--aliser-green-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.login-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-gray);
+  font-weight: 400;
+}
+
+/* ============================================
+   Formulario
+   ============================================ */
+
+.login-form {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--aliser-green-dark);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  border: 2px solid rgba(37, 103, 55, 0.15);
+  border-radius: 8px;
+  font-family: var(--font-family-primary);
+  font-size: 1rem;
+  color: var(--color-gray-dark);
+  background: var(--color-white);
+  transition: all var(--transition-base);
+  outline: none;
+  min-height: 48px;
+}
+
+.form-input:focus {
+  border-color: var(--aliser-teal-tertiary);
+  box-shadow: 0 0 0 4px rgba(67, 145, 132, 0.1);
+  background: var(--color-white);
+}
+
+.form-input::placeholder {
+  color: rgba(102, 102, 102, 0.5);
+}
+
+/* ============================================
+   Botón de Login - HackerNoon Style
+   ============================================ */
+
+.login-btn {
+  position: relative;
+  width: 100%;
+  padding: 1rem 2rem;
+  background: transparent;
+  border: 2px solid var(--aliser-teal-tertiary);
+  color: var(--aliser-teal-tertiary);
+  font-family: var(--font-family-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 0.5rem;
+  min-height: 52px;
+}
+
+.login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--aliser-teal-tertiary);
+  z-index: -1;
+  transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.login-btn:hover::before,
+.login-btn:focus::before {
+  left: 0;
+}
+
+.login-btn:hover,
+.login-btn:focus {
+  color: var(--aliser-green-primary);
+  outline: none;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(67, 145, 132, 0.3);
+}
+
+.login-btn .btn-text {
+  position: relative;
+  z-index: 1;
+}
+
+.login-btn .btn-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(67, 145, 132, 0.5) 0%, transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+  z-index: 0;
+}
+
+.login-btn:hover .btn-glow,
+.login-btn:focus .btn-glow {
+  opacity: 1;
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   Mensajes de Error y Éxito
+   ============================================ */
+
+.error-message {
+  background: rgba(220, 53, 69, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(220, 53, 69, 0.4);
+  color: #dc3545;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.1);
+  animation: slideInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.error-message::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(220, 53, 69, 0.6), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success-message {
+  background: rgba(40, 167, 69, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(40, 167, 69, 0.4);
+  color: #28a745;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.1);
+  animation: slideInDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================
+   Footer del Login
+   ============================================ */
+
+.login-footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(37, 103, 55, 0.1);
+}
+
+.login-footer-text {
+  font-size: 0.8125rem;
+  color: var(--color-gray);
+}
+
+.login-footer-text strong {
+  color: var(--aliser-green-primary);
+  font-weight: 600;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .login-logo {
+    width: 100px;
+  }
+  
+  .login-title {
+    font-size: 1.5rem;
+  }
+  
+  .login-subtitle {
+    font-size: 0.875rem;
+  }
+}
+
+/* ============================================
+   Estados de Accesibilidad
+   ============================================ */
+
+.login-btn:focus-visible {
+  outline: 3px solid var(--aliser-teal-tertiary);
+  outline-offset: 2px;
+}
+
+.form-input:focus-visible {
+  outline: 3px solid var(--aliser-teal-tertiary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Animación de Carga (para futuro uso)
+   ============================================ */
+
+.login-btn.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.login-btn.loading .btn-text::after {
+  content: '...';
+  animation: loadingDots 1.5s steps(4, end) infinite;
+}
+
+@keyframes loadingDots {
+  0%, 20% {
+    content: '.';
+  }
+  40% {
+    content: '..';
+  }
+  60%, 100% {
+    content: '...';
+  }
+}
