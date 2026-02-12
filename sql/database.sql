@@ -93,3 +93,23 @@ CREATE TABLE IF NOT EXISTS `vacantes` (
   KEY `idx_fecha_fin` (`fecha_fin`),
   KEY `idx_activo` (`activo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Tabla de vacantes de trabajo de ALISER';
+
+-- ============================================
+-- Tabla: terrenos
+-- Propuestas de terrenos para expansión de ALISER
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS `terrenos` (
+  `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ubicacion` VARCHAR(255) NOT NULL COMMENT 'Ubicación del terreno',
+  `superficie` DECIMAL(10,2) NOT NULL COMMENT 'Superficie del terreno en m²',
+  `precio_sugerido` DECIMAL(12,2) NULL DEFAULT NULL COMMENT 'Precio sugerido del terreno',
+  `imagen_terreno` VARCHAR(255) NULL DEFAULT NULL COMMENT 'Ruta de la imagen del terreno',
+  `descripcion` TEXT NOT NULL COMMENT 'Descripción detallada del terreno',
+  `estatus` ENUM('disponible', 'en_evaluacion', 'adquirido', 'rechazado') NOT NULL DEFAULT 'disponible' COMMENT 'Estatus del terreno',
+  `creado_en` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Fecha de creación del registro',
+  `actualizado_en` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Fecha de última actualización',
+  PRIMARY KEY (`id`),
+  KEY `idx_estatus` (`estatus`),
+  KEY `idx_ubicacion` (`ubicacion`(100))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Tabla de terrenos para expansión de ALISER';

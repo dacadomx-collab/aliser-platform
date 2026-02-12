@@ -1,0 +1,624 @@
+/* ============================================
+   ALISER - Módulo de Vacantes
+   Estilos modulares con Glassmorphism y Shimmer
+   Sin uso de !important - Variables CSS únicamente
+   ============================================ */
+
+/* ============================================
+   Variables Específicas del Módulo
+   ============================================ */
+
+:root {
+  /* Glassmorphism - Transparencias y Blur */
+  --glass-bg-primary: rgba(255, 255, 255, 0.95);
+  --glass-bg-secondary: rgba(255, 255, 255, 0.85);
+  --glass-bg-hover: rgba(255, 255, 255, 0.98);
+  --glass-blur: blur(10px);
+  --glass-blur-strong: blur(20px);
+  
+  /* Sombras Glassmorphism */
+  --glass-shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --glass-shadow-md: 0 8px 30px rgba(0, 0, 0, 0.15);
+  --glass-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --glass-shadow-inset: 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  
+  /* Bordes Glassmorphism */
+  --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+  --glass-border-strong: 1px solid rgba(255, 255, 255, 0.3);
+  
+  /* Shimmer - Colores ALISER */
+  --shimmer-primary: linear-gradient(
+    90deg,
+    var(--aliser-green-primary) 0%,
+    var(--aliser-green-primary) 40%,
+    var(--aliser-teal-light) 50%,
+    var(--aliser-green-primary) 60%,
+    var(--aliser-green-primary) 100%
+  );
+  --shimmer-size: 200% 100%;
+  --shimmer-duration: 4s;
+  
+  /* Espaciado del Módulo */
+  --module-spacing-xs: 0.5rem;
+  --module-spacing-sm: 1rem;
+  --module-spacing-md: 1.5rem;
+  --module-spacing-lg: 2rem;
+  --module-spacing-xl: 2.5rem;
+  --module-spacing-xxl: 3rem;
+  
+  /* Bordes Redondeados */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 20px;
+}
+
+/* ============================================
+   Contenedor Principal del Módulo
+   ============================================ */
+
+.admin-container {
+  min-height: 100vh;
+  padding: var(--module-spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   Header del Módulo - Glassmorphism
+   ============================================ */
+
+.admin-header {
+  background: var(--glass-bg-primary);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--border-radius-lg);
+  padding: var(--module-spacing-lg);
+  margin-bottom: var(--module-spacing-lg);
+  box-shadow: var(--glass-shadow-sm), var(--glass-shadow-inset);
+  border: var(--glass-border);
+  transition: all var(--transition-base);
+  animation: slideInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.admin-header:hover {
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-shadow-md), var(--glass-shadow-inset);
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--aliser-green-primary);
+  margin: 0 0 var(--module-spacing-xs) 0;
+  letter-spacing: -0.5px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Efecto Shimmer en Título */
+.admin-title::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--shimmer-primary);
+  background-size: var(--shimmer-size);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  animation: shimmerGlow var(--shimmer-duration) ease-in-out 2s infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerGlow {
+  0%, 100% {
+    background-position: -200% 0;
+    opacity: 0;
+  }
+  50% {
+    background-position: 200% 0;
+    opacity: 0.3;
+  }
+}
+
+/* ============================================
+   Tarjetas de Formulario - Glassmorphism
+   ============================================ */
+
+.form-card {
+  background: var(--glass-bg-primary);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--border-radius-lg);
+  padding: var(--module-spacing-xl);
+  box-shadow: var(--glass-shadow-sm), var(--glass-shadow-inset);
+  border: var(--glass-border);
+  transition: all var(--transition-base);
+  animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.form-card:hover {
+  box-shadow: var(--glass-shadow-md), var(--glass-shadow-inset);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Grupos de Formulario
+   ============================================ */
+
+.form-group {
+  margin-bottom: var(--module-spacing-md);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--aliser-green-dark);
+  margin-bottom: var(--module-spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-label .required {
+  color: #dc3545;
+  margin-left: 0.25rem;
+}
+
+/* ============================================
+   Inputs y Textareas - Glassmorphism
+   ============================================ */
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  border: 2px solid rgba(37, 103, 55, 0.15);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family-primary);
+  font-size: 1rem;
+  color: var(--color-gray-dark);
+  background: var(--color-white);
+  transition: all var(--transition-base);
+  outline: none;
+}
+
+.form-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--aliser-teal-tertiary);
+  box-shadow: 0 0 0 4px rgba(67, 145, 132, 0.1);
+  background: var(--color-white);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(102, 102, 102, 0.5);
+}
+
+/* ============================================
+   File Input - Glassmorphism con Hover
+   ============================================ */
+
+.form-file-wrapper {
+  position: relative;
+}
+
+.form-file-input {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  border: 2px dashed rgba(37, 103, 55, 0.3);
+  border-radius: var(--border-radius-sm);
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-family: var(--font-family-primary);
+  font-size: 0.95rem;
+  color: var(--color-gray-dark);
+}
+
+.form-file-input:hover {
+  border-color: var(--aliser-teal-tertiary);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 4px rgba(67, 145, 132, 0.1);
+}
+
+.form-file-preview {
+  margin-top: var(--module-spacing-sm);
+}
+
+.form-file-preview img {
+  max-width: 300px;
+  max-height: 200px;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--glass-shadow-sm);
+  object-fit: cover;
+  display: block;
+}
+
+/* Lazy Loading para imágenes */
+.form-file-preview img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.form-file-preview img[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* ============================================
+   Checkbox
+   ============================================ */
+
+.form-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--module-spacing-xs);
+}
+
+.form-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--aliser-teal-tertiary);
+}
+
+/* ============================================
+   Botones de Acción
+   ============================================ */
+
+.form-actions {
+  display: flex;
+  gap: var(--module-spacing-sm);
+  margin-top: var(--module-spacing-lg);
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  padding: 0.875rem 1.5rem;
+  background: rgba(102, 102, 102, 0.1);
+  border: 2px solid rgba(102, 102, 102, 0.3);
+  color: var(--color-gray-dark);
+  font-family: var(--font-family-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  display: inline-block;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: rgba(102, 102, 102, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   Grid de Vacantes
+   ============================================ */
+
+.vacantes-grid {
+  display: grid;
+  gap: var(--module-spacing-md);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* ============================================
+   Tarjetas de Vacante - Glassmorphism
+   ============================================ */
+
+.vacante-card {
+  background: var(--glass-bg-primary);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--border-radius-lg);
+  padding: var(--module-spacing-lg);
+  box-shadow: var(--glass-shadow-sm), var(--glass-shadow-inset);
+  border: var(--glass-border);
+  transition: all var(--transition-base);
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.vacante-card:nth-child(1) { animation-delay: 0.1s; }
+.vacante-card:nth-child(2) { animation-delay: 0.2s; }
+.vacante-card:nth-child(3) { animation-delay: 0.3s; }
+.vacante-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vacante-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--glass-shadow-md), var(--glass-shadow-inset);
+  background: var(--glass-bg-hover);
+}
+
+.vacante-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-bottom: var(--module-spacing-sm);
+  gap: var(--module-spacing-sm);
+  flex-wrap: wrap;
+}
+
+.vacante-titulo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--aliser-green-primary);
+  margin: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* ============================================
+   Badges de Estado
+   ============================================ */
+
+.vacante-badges {
+  display: flex;
+  gap: var(--module-spacing-xs);
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--border-radius-md);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-active {
+  background: rgba(40, 167, 69, 0.15);
+  color: #28a745;
+  border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.badge-inactive {
+  background: rgba(108, 117, 125, 0.15);
+  color: #6c757d;
+  border: 1px solid rgba(108, 117, 125, 0.3);
+}
+
+/* ============================================
+   Imágenes de Vacante - Lazy Loading
+   ============================================ */
+
+.vacante-imagen {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: var(--border-radius-sm);
+  margin: var(--module-spacing-sm) 0;
+  box-shadow: var(--glass-shadow-sm);
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-base);
+}
+
+.vacante-imagen:hover {
+  transform: scale(1.02);
+}
+
+/* Lazy Loading */
+.vacante-imagen[loading="lazy"] {
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.vacante-imagen[loading="lazy"].loaded {
+  opacity: 1;
+}
+
+/* ============================================
+   Contenido de Vacante
+   ============================================ */
+
+.vacante-descripcion {
+  color: var(--color-gray);
+  margin: var(--module-spacing-sm) 0;
+  line-height: 1.6;
+}
+
+.vacante-fechas {
+  display: flex;
+  gap: var(--module-spacing-lg);
+  margin: var(--module-spacing-sm) 0;
+  font-size: 0.875rem;
+  color: var(--color-gray);
+  flex-wrap: wrap;
+}
+
+.vacante-actions {
+  display: flex;
+  gap: var(--module-spacing-xs);
+  margin-top: var(--module-spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   Botones de Acción de Vacante
+   ============================================ */
+
+.btn-danger {
+  padding: 0.5rem 1rem;
+  background: rgba(220, 53, 69, 0.1);
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  color: #dc3545;
+  font-size: 0.875rem;
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  display: inline-block;
+  cursor: pointer;
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+}
+
+.btn-danger:hover {
+  background: rgba(220, 53, 69, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
+}
+
+/* ============================================
+   Estado Vacío
+   ============================================ */
+
+.empty-state {
+  background: var(--glass-bg-primary);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--border-radius-lg);
+  padding: var(--module-spacing-xxl) var(--module-spacing-lg);
+  text-align: center;
+  box-shadow: var(--glass-shadow-sm), var(--glass-shadow-inset);
+  border: var(--glass-border);
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  margin-bottom: var(--module-spacing-sm);
+  opacity: 0.7;
+}
+
+.empty-state-text {
+  font-size: 1.125rem;
+  color: var(--color-gray);
+  margin-bottom: var(--module-spacing-lg);
+}
+
+/* ============================================
+   Admin Actions Header
+   ============================================ */
+
+.admin-actions {
+  display: flex;
+  gap: var(--module-spacing-sm);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+  .admin-container {
+    padding: var(--module-spacing-sm);
+  }
+  
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .vacantes-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-card {
+    padding: var(--module-spacing-md);
+  }
+  
+  .vacante-fechas {
+    flex-direction: column;
+    gap: var(--module-spacing-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-title {
+    font-size: 1.5rem;
+  }
+  
+  .vacante-titulo {
+    font-size: 1.25rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .form-actions .btn-secondary,
+  .form-actions .login-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ============================================
+   Accesibilidad
+   ============================================ */
+
+.form-input:focus-visible,
+.form-textarea:focus-visible,
+.form-file-input:focus-visible {
+  outline: 3px solid var(--aliser-teal-tertiary);
+  outline-offset: 2px;
+}
+
+.btn-secondary:focus-visible,
+.btn-danger:focus-visible {
+  outline: 3px solid var(--aliser-teal-tertiary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Utilidades de Grid para Fechas
+   ============================================ */
+
+.form-dates-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--module-spacing-sm);
+}
+
+@media (max-width: 480px) {
+  .form-dates-grid {
+    grid-template-columns: 1fr;
+  }
+}

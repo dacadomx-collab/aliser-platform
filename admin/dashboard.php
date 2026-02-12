@@ -226,36 +226,25 @@ $admin_usuario = isset($_SESSION['admin_usuario']) ? $_SESSION['admin_usuario'] 
             <!-- Módulos del Sistema -->
             <div class="modules-section" style="margin: 2rem 0;">
                 <h2 style="font-size: 1.25rem; color: var(--aliser-green-primary); margin-bottom: 1.5rem;">Módulos</h2>
-                <div class="modules-grid" style="display: grid; gap: 1rem;">
-                    <a href="vacantes.php" class="module-btn" style="
-                        position: relative;
-                        padding: 1rem 2rem;
-                        background: transparent;
-                        border: 2px solid var(--aliser-teal-tertiary);
-                        color: var(--aliser-teal-tertiary);
-                        font-family: var(--font-family-primary);
-                        font-size: 1rem;
-                        font-weight: 600;
-                        border-radius: 8px;
-                        cursor: pointer;
-                        transition: all var(--transition-fast);
-                        overflow: hidden;
-                        text-transform: uppercase;
-                        letter-spacing: 1px;
-                        text-decoration: none;
-                        display: block;
-                    ">
-                        <span style="position: relative; z-index: 1;">📋 Gestión de Vacantes</span>
-                        <span class="btn-glow"></span>
-                    </a>
-                </div>
-            </div>
+                    <div class="module-card">
+                        <a href="vacantes.php" class="login-btn" style="text-decoration: none; display: inline-block; width: 100%; text-align: center;">
+                            📋 Gestión de Vacantes
+                        </a>
+                    </div>
 
-            <!-- Botón de Cerrar Sesión -->
-            <a href="?logout=1" class="logout-btn" style="margin-top: 1rem;">
-                <span class="btn-text">Cerrar Sesión</span>
-                <span class="btn-glow"></span>
-            </a>
+
+                    <div class="module-card">
+                        <a href="terrenos.php" class="login-btn" style="text-decoration: none; display: inline-block; width: 100%; text-align: center;">
+                            📍 Gestión de Terrenos
+                        </a>
+                    </div>
+                </div>
+                <!-- Botón de Cerrar Sesión -->
+                <a href="?logout=1" class="logout-btn" style="margin-top: 1rem;">
+                    <span class="btn-text">Cerrar Sesión</span>
+                    <span class="btn-glow"></span>
+                </a>
+            </div>
         </div>
     </div>
 </body>

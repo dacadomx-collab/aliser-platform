@@ -1,0 +1,3 @@
+Cursor, hemos terminado por hoy. Analiza todos los cambios que hicimos en el código y en la base de datos, y actualiza el archivo STATUS_PROYECTO.md. Asegúrate de marcar como 'Listo' el Módulo de Terrenos y de anotar cualquier pendiente para mañana.
+
+"Lee el STATUS_PROYECTO.md para ver en qué nos quedamos"

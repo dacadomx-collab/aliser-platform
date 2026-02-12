@@ -59,6 +59,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -100,6 +101,35 @@ body {
    NOTA: Los estilos del header están en assets/css/styles.css
    Este archivo mantiene solo estilos generales y de otras secciones
    ============================================ */
+
+/* Estilos para el Video de Fondo */
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+/* Estilos para la Imagen AVIF */
+.hero-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../../assets/img/aliser_frutas.avif') no-repeat center center/cover;
+    z-index: 1; 
+    /* === EL INTERRUPTOR DE PRUEBAS === */
+    display: none;  /* <--- Mantenlo en 'block' para mostrar la FOTO */
+    /* display: none; */ /* <--- Cambialo a 'none' para mostrar el VIDEO */
+}
+
 
 /* ============================================
    Eslogan Institucional - Regla ORO
@@ -371,33 +401,14 @@ body.scrolled .nav-logo-mobile-wrapper {
   display: block;
 }
 
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.3) 0%,
-    rgba(0, 0, 0, 0.5) 50%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
-  z-index: 2;
-}
-
 .hero-content {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  max-width: 1200px;
-  padding: var(--spacing-lg) var(--spacing-md);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-md);
-  animation: fadeUp 0.8s ease-out 0.3s both;
+    position: relative;
+    z-index: 10; /* Asegura que el texto siempre esté ARRIBA de la imagen/video */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    color: var(--color-white);
 }
 
 .hero-badge {
@@ -484,9 +495,6 @@ body.scrolled .nav-logo-mobile-wrapper {
     max-height: 1000px;
   }
 
-  .hero-content {
-    padding: var(--spacing-xxl) var(--spacing-xl);
-  }
 }
 
 /* Aspect Ratio Responsive - Mobile Vertical, Desktop Horizontal */
@@ -952,6 +960,330 @@ main {
 }
 
 /* ============================================
+   Sección de Vacantes (Bolsa de Trabajo)
+   ============================================ */
+
+.vacantes-section {
+  background: linear-gradient(135deg, var(--aliser-green-primary) 0%, var(--aliser-teal-dark) 100%);
+  padding: var(--spacing-xxl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.vacantes-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(236, 212, 168, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xxl);
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--color-white);
+  margin-bottom: var(--spacing-md);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ARF-GRID: Flex-wrap con justify-center */
+.arf-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  position: relative;
+  z-index: 1;
+}
+
+/* Tarjetas de Vacantes */
+.vacante-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.vacante-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+.vacante-image-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  background: var(--aliser-sand-light);
+}
+
+.vacante-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+  opacity: 0;
+}
+
+.vacante-image.loaded {
+  opacity: 1;
+}
+
+.vacante-card:hover .vacante-image {
+  transform: scale(1.05);
+}
+
+.vacante-content {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.vacante-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--aliser-green-primary);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.3;
+}
+
+.vacante-description {
+  color: var(--color-gray);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.vacante-dates {
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-size-small);
+  color: var(--aliser-teal-tertiary);
+}
+
+.vacante-date {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.vacante-date i {
+  font-size: 0.875rem;
+}
+
+.vacante-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--aliser-teal-tertiary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  margin-top: auto;
+}
+
+.vacante-link:hover {
+  color: var(--aliser-green-primary);
+}
+
+.vacante-link i {
+  transition: transform var(--transition-fast);
+}
+
+.vacante-link:hover i {
+  transform: translateX(4px);
+}
+
+/* Lista de Terrenos Dinámica */
+.terrenos-list {
+  margin-bottom: var(--spacing-xxl);
+}
+
+.terreno-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(37, 103, 55, 0.15);
+  border: 1px solid rgba(236, 212, 168, 0.3);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.terreno-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(37, 103, 55, 0.2);
+}
+
+.terreno-image-wrapper {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+  background: var(--aliser-sand-light);
+}
+
+.terreno-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+  opacity: 0;
+}
+
+.terreno-image.loaded {
+  opacity: 1;
+}
+
+.terreno-card:hover .terreno-image {
+  transform: scale(1.05);
+}
+
+.terreno-content {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.terreno-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.terreno-ubicacion {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--aliser-green-primary);
+  margin: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+.terreno-estatus {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.terreno-estatus-disponible {
+  background: rgba(40, 167, 69, 0.15);
+  color: #28a745;
+  border: 1px solid rgba(40, 167, 69, 0.3);
+}
+
+.terreno-estatus-en_evaluacion {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.terreno-descripcion {
+  color: var(--color-gray);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.terreno-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(37, 103, 55, 0.1);
+}
+
+.terreno-superficie {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--aliser-green-primary);
+  font-weight: 600;
+  font-size: var(--font-size-small);
+}
+
+.terreno-precio {
+  color: var(--aliser-teal-tertiary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* Responsive para tarjetas */
+@media (min-width: 768px) {
+  .vacante-card,
+  .terreno-card {
+    max-width: 400px;
+  }
+  
+  .vacante-image-wrapper {
+    height: 220px;
+  }
+  
+  .terreno-image-wrapper {
+    height: 280px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .vacante-card,
+  .terreno-card {
+    max-width: 450px;
+  }
+}
+
+/* ============================================
    Sección Adquisición de Terrenos
    ============================================ */
 
@@ -1233,4 +1565,214 @@ main {
   .placeholder-icon {
     font-size: 5rem;
   }
+}
+/* Modal Glassmorphism */
+.modal-overlay {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-glass {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  color: #fff;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--aliser-sand);
+  padding-bottom: 10px;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.modal-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.modal-form .form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-form label {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  color: var(--aliser-sand);
+}
+
+.modal-form input, 
+.modal-form select, 
+.modal-form textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  color: #fff;
+  outline: none;
+}
+
+.modal-form input:focus {
+  border-color: var(--aliser-green);
+}
+
+.btn-aliser-glow {
+  width: 100%;
+  padding: 15px;
+  background: var(--aliser-green);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(37, 103, 55, 0.4);
+}
+
+.btn-aliser-glow:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(37, 103, 55, 0.6);
+}
+
+@media (max-width: 600px) {
+  .modal-form .form-row { grid-template-columns: 1fr; }
+}
+/* --- HERO SECTION --- */
+
+.hero-premium {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000; /* Fondo negro por si nada carga */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(37, 103, 55, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
+    z-index: 2;
+}
+
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero-title span {
+    color: var(--aliser-sand); /* O el color dorado/crema de Aliser */
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+/* --- BUSCADOR GLASSMORPHISM --- */
+.search-container-glass {
+    display: flex;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 8px 15px;
+    margin: 0 auto 4rem;
+    max-width: 600px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.search-container-glass input {
+    background: transparent;
+    border: none;
+    flex: 1;
+    padding: 12px;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.search-container-glass input::placeholder { color: rgba(255,255,255,0.7); }
+
+.btn-search {
+    background: var(--aliser-green);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* --- ARF-GRID (ACCESOS) --- */
+.hero-grid-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.hero-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    width: 180px;
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.hero-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--aliser-green);
+}
+
+.hero-card i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--aliser-sand);
 }
