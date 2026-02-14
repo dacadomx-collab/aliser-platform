@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es-MX">
 <head>
   <meta charset="UTF-8">
@@ -38,7 +38,7 @@
       "@type": "LocalBusiness",
       "name": "ALISER",
       "image": "https://aliser.mx/assets/img/logo.webp",
-      "description": "Tienda de autoservicio líder en Baja California Sur, especialistas en abarrotes, carnes y distribución hotelera.",
+      "description": "Tienda de autoservicio lÃ­der en Baja California Sur, especialistas en abarrotes, carnes y distribuciÃ³n hotelera.",
       "url": "https://aliser.mx",
       "telephone": "+521234567890",
       "priceRange": "$$",
@@ -78,17 +78,17 @@
         <a href="#hero" class="header-logo" aria-label="ALISER - Inicio">
           <img src="assets/img/logo/logo.png" alt="ALISER - Tienda de Autoservicio" class="logo-img logo-img-top">
         </a>
-        <p class="header-slogan">LA ÚNICA CADENA DE SUDCALIFORNIA</p>
+        <p class="header-slogan">LA ÃšNICA CADENA DE SUDCALIFORNIA</p>
       </div>
     </div>
   </header>
 
   <!-- Nav Bar (Nivel Inferior - Verde #00843D) -->
-  <nav class="nav-bar" role="navigation" aria-label="Navegación principal">
+  <nav class="nav-bar" role="navigation" aria-label="NavegaciÃ³n principal">
     <div class="nav-bar-container">
       <input type="checkbox" id="menu-toggle"/>
       
-      <!-- Menú Desktop -->
+      <!-- MenÃº Desktop -->
       <ul class="nav-menu">
         <li class="nav-item nav-item-home">
           <a href="#hero" class="nav-link nav-link-home" aria-label="Inicio">
@@ -97,36 +97,36 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="#promociones" class="nav-link">Promociones</a>
+          <a href="promociones-public.php" class="nav-link">Promociones</a>
         </li>
         <li class="nav-item">
           <a href="#terrenos-section" class="nav-link">Terrenos</a>
         </li>
-        <!-- Logo Móvil (aparece al hacer scroll) -->
+        <!-- Logo MÃ³vil (aparece al hacer scroll) -->
         <li class="nav-item nav-logo-mobile-wrapper">
           <a href="#hero" class="nav-logo-mobile" aria-label="ALISER - Inicio">
             <img src="assets/img/logo/logo.png" alt="ALISER" class="logo-img logo-img-nav">
           </a>
           <!-- Eslogan en Nav-Bar (aparece al hacer scroll) -->
-          <p class="nav-slogan">LA ÚNICA CADENA DE SUDCALIFORNIA</p>
+          <p class="nav-slogan">LA ÃšNICA CADENA DE SUDCALIFORNIA</p>
         </li>
         <li class="nav-item nav-item-right">
-          <a href="#vacantes-section" class="nav-link">Trabaja con Nosotros</a>
+          <a href="vacantes-public.php" class="nav-link">Trabaja con Nosotros</a>
         </li>
       </ul>
 
       <!-- Burger Menu (Mobile) -->
-      <label id="trigger" for="menu-toggle" class="burger-trigger" aria-label="Abrir menú de navegación"></label>
+      <label id="trigger" for="menu-toggle" class="burger-trigger" aria-label="Abrir menÃº de navegaciÃ³n"></label>
       <label id="burger" for="menu-toggle" class="burger-icon" aria-hidden="true">
         <span></span>
       </label>
 
-      <!-- Menú Mobile (Burger Menu) -->
-      <ul id="menu" class="mobile-menu" role="navigation" aria-label="Menú de navegación móvil">
+      <!-- MenÃº Mobile (Burger Menu) -->
+      <ul id="menu" class="mobile-menu" role="navigation" aria-label="MenÃº de navegaciÃ³n mÃ³vil">
         <li><a href="#hero"><i class="fas fa-home" aria-hidden="true"></i> Inicio</a></li>
-        <li><a href="#promociones">Promociones</a></li>
+        <li><a href="promociones-public.php">Promociones</a></li>
         <li><a href="#terrenos-section">Terrenos</a></li>
-        <li><a href="#vacantes-section">Trabaja con Nosotros</a></li>
+        <li><a href="vacantes-public.php">Trabaja con Nosotros</a></li>
       </ul>
     </div>
   </nav>
@@ -141,15 +141,15 @@
       
       <div class="hero-content">
           <h1 class="hero-title">Calidad que <span>Enorgullece</span></h1>
-          <p class="hero-subtitle">Distribución premium de abarrotes y carnes para hogares y hoteles en BCS.</p>
+          <p class="hero-subtitle">DistribuciÃ³n premium de abarrotes y carnes para hogares y hoteles en BCS.</p>
           
           <div class="search-container-glass">
-              <input type="text" placeholder="¿Qué estás buscando hoy?" id="main-search">
+              <input type="text" placeholder="Â¿QuÃ© estÃ¡s buscando hoy?" id="main-search">
               <button class="btn-search"><i class="fas fa-search"></i></button>
           </div>
 
           <div class="hero-grid-nav">
-              <a href="#vacantes" class="hero-card">
+              <a href="vacantes-public.php" class="hero-card">
                   <i class="fas fa-briefcase"></i>
                   <span>Bolsa de Trabajo</span>
               </a>
@@ -157,7 +157,7 @@
                   <i class="fas fa-map-marked-alt"></i>
                   <span>Ofrecer Terreno</span>
               </a>
-              <a href="#promociones" class="hero-card">
+              <a href="promociones-public.php" class="hero-card">
                   <i class="fas fa-tag"></i>
                   <span>Ofertas del Mes</span>
               </a>
@@ -166,35 +166,24 @@
   </section>
   <!-- Contenido Principal -->
   <main>
-    <!-- Sección de Vacantes (Bolsa de Trabajo) -->
-    <section id="vacantes-section" class="vacantes-section">
-      <div class="vacantes-container">
-        <div class="section-header">
-          <h2 class="section-title">Trabaja con Nosotros</h2>
-          <p class="section-subtitle">Únete al equipo de ALISER y forma parte de la única cadena de Sudcalifornia</p>
-        </div>
-        <div class="vacantes-container arf-grid"></div>
-      </div>
-    </section>
-
-    <!-- Sección Adquisición de Terrenos -->
+    <!-- SecciÃ³n AdquisiciÃ³n de Terrenos -->
     <section id="terrenos-section" class="terrenos-section">
       <div class="vacantes-container">
         <div class="section-header">
           <h2 class="section-title">Terrenos Disponibles</h2>
-          <p class="section-subtitle">Estamos en búsqueda de terrenos estratégicos para nuestra expansión</p>
+          <p class="section-subtitle">Estamos en bÃºsqueda de terrenos estratÃ©gicos para nuestra expansiÃ³n</p>
         </div>
         
-        <!-- Lista Dinámica de Terrenos -->
+        <!-- Lista DinÃ¡mica de Terrenos -->
         <div class="terrenos-list arf-grid"></div>
         
         <div class="terrenos-grid">
           <!-- Columna Izquierda: Flyer Publicitario -->
           <div class="terrenos-flyer">
             <div class="flyer-content">
-              <h2 class="flyer-title">¡Buscamos tu terreno!</h2>
+              <h2 class="flyer-title">Â¡Buscamos tu terreno!</h2>
               <div class="flyer-placeholder">
-                <div class="placeholder-icon">🏠</div>
+                <div class="placeholder-icon">ðŸ </div>
                 <p class="placeholder-text">Espacio para flyer publicitario</p>
               </div>
             </div>
@@ -203,8 +192,8 @@
           <!-- Columna Derecha: Formulario de Contacto -->
           <div class="terrenos-form">
             <div class="form-container">
-              <h3 class="form-title">Contáctanos</h3>
-              <p class="form-subtitle">¿Tienes un terreno disponible? ¡Queremos saber de ti!</p>
+              <h3 class="form-title">ContÃ¡ctanos</h3>
+              <p class="form-subtitle">Â¿Tienes un terreno disponible? Â¡Queremos saber de ti!</p>
 
               <form class="terrenos-contact-form" action="#" method="POST" aria-label="Formulario de contacto para terrenos">
                 <div class="form-group">
@@ -220,7 +209,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="ubicacion-terreno" class="form-label">Ubicación del terreno</label>
+                  <label for="ubicacion-terreno" class="form-label">UbicaciÃ³n del terreno</label>
                   <input
                     type="text"
                     id="ubicacion-terreno"
@@ -238,13 +227,13 @@
                     id="medidas-terreno"
                     name="medidas"
                     class="form-input"
-                    placeholder="Ej: 500 m², 1 hectárea, etc."
+                    placeholder="Ej: 500 mÂ², 1 hectÃ¡rea, etc."
                     required
                     aria-required="true">
                 </div>
 
                 <div class="form-group">
-                  <label for="telefono-contacto" class="form-label">Teléfono de contacto</label>
+                  <label for="telefono-contacto" class="form-label">TelÃ©fono de contacto</label>
                   <input
                     type="tel"
                     id="telefono-contacto"
@@ -256,7 +245,7 @@
                 </div>
 
                 <button type="submit" class="form-submit-btn hacker-btn">
-                  <span class="btn-text">Enviar Información</span>
+                  <span class="btn-text">Enviar InformaciÃ³n</span>
                   <span class="btn-glow"></span>
                 </button>
               </form>
@@ -270,23 +259,23 @@
   <!-- Footer -->
   <footer class="main-footer" role="contentinfo">
     <div class="footer-container">
-      <!-- Columna 1: Logo y Misión -->
+      <!-- Columna 1: Logo y MisiÃ³n -->
       <div class="footer-column footer-brand">
         <div class="footer-logo">
           <img src="assets/img/logo/logo.png" alt="ALISER" class="footer-logo-img">
         </div>
-        <h3 class="footer-brand-title">Nuestra Misión</h3>
+        <h3 class="footer-brand-title">Nuestra MisiÃ³n</h3>
         <p class="footer-brand-text">Proveer productos de calidad superior con el mejor servicio al cliente en Baja California Sur.</p>
       </div>
 
-      <!-- Columna 2: Enlaces Rápidos -->
+      <!-- Columna 2: Enlaces RÃ¡pidos -->
       <div class="footer-column footer-links">
         <h3 class="footer-column-title">Explorar</h3>
         <ul class="footer-link-list">
           <li><a href="#hero" class="footer-link">Inicio</a></li>
-          <li><a href="#vacantes-section" class="footer-link">Bolsa de Trabajo</a></li>
-          <li><a href="#terrenos-section" class="footer-link">Adquisición de Terrenos</a></li>
-          <li><a href="#promociones" class="footer-link">Promociones</a></li>
+          <li><a href="vacantes-public.php" class="footer-link">Bolsa de Trabajo</a></li>
+          <li><a href="#terrenos-section" class="footer-link">AdquisiciÃ³n de Terrenos</a></li>
+          <li><a href="promociones-public.php" class="footer-link">Promociones</a></li>
         </ul>
       </div>
 
@@ -294,14 +283,14 @@
       <div class="footer-column footer-contact glass-effect">
         <h3 class="footer-column-title">Contacto</h3>
         <div class="footer-contact-item">
-          <span class="contact-icon">📞</span>
+          <span class="contact-icon">ðŸ“ž</span>
           <div>
-            <p class="contact-label">Teléfono</p>
+            <p class="contact-label">TelÃ©fono</p>
             <a href="tel:+521234567890" class="contact-link">+52 (612) 123-4567</a>
           </div>
         </div>
         <div class="footer-contact-item">
-          <span class="contact-icon">✉️</span>
+          <span class="contact-icon">âœ‰ï¸</span>
           <div>
             <p class="contact-label">Email</p>
             <a href="mailto:info@aliser.mx" class="contact-link">info@aliser.mx</a>
@@ -322,14 +311,14 @@
       <div class="footer-column footer-newsletter">
         <h3 class="footer-column-title">Suscribirse</h3>
         <p class="newsletter-text">Recibe nuestras ofertas semanales y novedades exclusivas.</p>
-        <form class="newsletter-form" action="#" method="POST" aria-label="Formulario de suscripción">
+        <form class="newsletter-form" action="#" method="POST" aria-label="Formulario de suscripciÃ³n">
           <div class="newsletter-input-group">
             <input 
               type="email" 
               class="newsletter-input" 
-              placeholder="Tu correo electrónico" 
+              placeholder="Tu correo electrÃ³nico" 
               required
-              aria-label="Correo electrónico">
+              aria-label="Correo electrÃ³nico">
             <button type="submit" class="newsletter-btn hacker-btn">
               <span class="btn-text">Suscribir</span>
               <span class="btn-glow"></span>
@@ -356,7 +345,7 @@
     <!-- Footer Bottom -->
     <div class="footer-bottom">
       <div class="footer-container">
-        <p class="footer-copyright">&copy; 2026 ALISER. Todos los derechos reservados. | <a href="#" class="footer-link">Política de Privacidad</a></p>
+        <p class="footer-copyright">&copy; 2026 ALISER. Todos los derechos reservados. | <a href="#" class="footer-link">PolÃ­tica de Privacidad</a></p>
       </div>
     </div>
   </footer>
@@ -373,7 +362,7 @@
       <form id="form-oferta-terreno" class="modal-form">
         <div class="form-row">
           <div class="form-group">
-            <label for="tipo_oferta">¿Qué ofrece?</label>
+            <label for="tipo_oferta">Â¿QuÃ© ofrece?</label>
             <select id="tipo_oferta" name="tipo_oferta" required>
               <option value="renta">Renta de Terreno/Local</option>
               <option value="venta">Venta de Terreno/Propiedad</option>
@@ -381,7 +370,7 @@
           </div>
           <div class="form-group">
             <label for="nombre">Nombre Completo</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan PÃ©rez" required>
           </div>
         </div>
   
@@ -391,36 +380,36 @@
             <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
           </div>
           <div class="form-group">
-            <label for="telefono">Teléfono</label>
+            <label for="telefono">TelÃ©fono</label>
             <input type="tel" id="telefono" name="telefono" placeholder="612 123 4567" required>
           </div>
         </div>
   
         <div class="form-group">
           <label for="ubicacion_maps">Link de Google Maps</label>
-          <input type="url" id="ubicacion_maps" name="ubicacion_maps" placeholder="Pegue el enlace de la ubicación aquí" required>
+          <input type="url" id="ubicacion_maps" name="ubicacion_maps" placeholder="Pegue el enlace de la ubicaciÃ³n aquÃ­" required>
           <small id="maps-feedback" class="feedback-text"></small>
         </div>
   
         <div class="form-row">
           <div class="form-group">
-            <label for="metros_cuadrados">Metros Cuadrados (m²)</label>
+            <label for="metros_cuadrados">Metros Cuadrados (mÂ²)</label>
             <input type="number" id="metros_cuadrados" name="metros_cuadrados" placeholder="Ej. 500" required>
           </div>
           <div class="form-group">
-            <label for="expectativa_economica">Expectativa Económica (MXN)</label>
+            <label for="expectativa_economica">Expectativa EconÃ³mica (MXN)</label>
             <input type="number" id="expectativa_economica" name="expectativa_economica" placeholder="Monto esperado" required>
           </div>
         </div>
   
         <div class="form-group">
-          <label for="situacion_legal">Situación Legal (Escrituras, Predial, etc.)</label>
-          <textarea id="situacion_legal" name="situacion_legal" rows="2" placeholder="Describa la documentación disponible..."></textarea>
+          <label for="situacion_legal">SituaciÃ³n Legal (Escrituras, Predial, etc.)</label>
+          <textarea id="situacion_legal" name="situacion_legal" rows="2" placeholder="Describa la documentaciÃ³n disponible..."></textarea>
         </div>
         <div class="form-group">
           <label for="imagen_terreno">Foto del Terreno (Opcional)</label>
           <input type="file" id="imagen_terreno" name="imagen_terreno" accept="image/*">
-          <small>Formatos: JPG, PNG. Máx 2MB.</small>
+          <small>Formatos: JPG, PNG. MÃ¡x 2MB.</small>
         </div>  
         <button type="submit" class="btn-aliser-glow">Enviar Propuesta a Aliser</button>
       </form>
@@ -428,3 +417,4 @@
   </div>
 </body>
 </html>
+

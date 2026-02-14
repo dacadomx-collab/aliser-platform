@@ -7,16 +7,8 @@
  * @version 1.0.0
  */
 
-// Iniciar sesión si no está iniciada
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-// Verificar si el usuario está autenticado
-if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
-    header('Location: index.php');
-    exit;
-}
+require_once __DIR__ . '/includes/auth.php';
+requireRole(['MASTER', 'BIENES']);
 
 // Definir constante antes de incluir db.php
 if (!defined('ALISER_ADMIN')) {
@@ -183,14 +175,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Estilos del Panel de Administración -->
     <link rel="stylesheet" href="css/admin-style.css">
     <!-- Estilos Modulares del Módulo de Vacantes (reutilizables) -->
-    <link rel="stylesheet" href="css/vacantes-module.css">
 </head>
-<body>
-    <div class="admin-container">
+<body class="admin-body-secondary">
+    <div class="admin-wrapper">
         <!-- Header -->
-        <div class="admin-header">
+        <div class="admin-header-main">
             <h1 class="admin-title"><?php echo $editar ? '✏️ Editar Terreno' : '➕ Nuevo Terreno'; ?></h1>
-            <p style="color: var(--color-gray); margin: 0;"><?php echo $editar ? 'Modifica los datos del terreno' : 'Completa el formulario para registrar un nuevo terreno'; ?></p>
+            <p class="admin-subtitle"><?php echo $editar ? 'Modifica los datos del terreno' : 'Completa el formulario para registrar un nuevo terreno'; ?></p>
         </div>
 
         <!-- Mensajes -->
@@ -207,7 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
         <!-- Formulario -->
-        <div class="form-card">
+        <div class="admin-content-card">
             <form method="POST" enctype="multipart/form-data">
                 <!-- Ubicación -->
                 <div class="form-group">
@@ -224,7 +215,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             value="<?php echo $terreno ? htmlspecialchars($terreno['ubicacion']) : ''; ?>"
                             required
                         >
-                        <div id="ubicacionFeedback" class="ubicacion-feedback" style="display: none;">
+                        <div id="ubicacionFeedback" class="ubicacion-feedback is-hidden">
                             <span class="ubicacion-check">✓</span>
                             <span class="ubicacion-message">Ubicación detectada</span>
                         </div>
@@ -296,7 +287,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <?php echo $editar ? '' : 'required'; ?>
                             onchange="previewImage(this)"
                         >
-                        <small style="display: block; margin-top: 0.5rem; color: var(--color-gray);">
+                        <small class="form-help-text">
                             Formatos permitidos: JPG, PNG, WEBP. Tamaño máximo: 5MB. Se convertirá automáticamente a WebP.
                         </small>
                     </div>
@@ -306,7 +297,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                  alt="Imagen actual" 
                                  loading="lazy"
                                  class="loaded">
-                            <p style="font-size: 0.875rem; color: var(--color-gray); margin-top: 0.5rem;">
+                            <p class="form-help-text">
                                 Imagen actual. Sube una nueva para reemplazarla.
                             </p>
                         <?php endif; ?>
@@ -350,75 +341,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </div>
     </div>
-
-    <style>
-        /* Feedback de Ubicación - Glassmorphism */
-        .ubicacion-wrapper {
-            position: relative;
-        }
-        
-        .ubicacion-feedback {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            margin-top: 0.5rem;
-            background: var(--glass-bg-primary);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border-radius: var(--border-radius-sm);
-            padding: 0.75rem 1rem;
-            box-shadow: var(--glass-shadow-sm), var(--glass-shadow-inset);
-            border: var(--glass-border);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            animation: slideInDown 0.3s ease-out;
-            z-index: 10;
-        }
-        
-        .ubicacion-check {
-            color: #28a745;
-            font-weight: 700;
-            font-size: 1.125rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-            height: 24px;
-            background: rgba(40, 167, 69, 0.15);
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-        
-        .ubicacion-message {
-            color: var(--aliser-green-primary);
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-        
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .ubicacion-feedback.fade-out {
-            animation: fadeOut 0.3s ease-out forwards;
-        }
-        
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-        }
-    </style>
 
     <script>
         /**
@@ -627,7 +549,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
                     // Agregar texto informativo
                     const text = document.createElement('p');
-                    text.style.cssText = 'font-size: 0.875rem; color: var(--color-gray); margin-top: 0.5rem;';
+                    text.className = 'form-help-text';
                     text.textContent = 'Vista previa de la imagen que se subirá.';
                     preview.appendChild(text);
                 };

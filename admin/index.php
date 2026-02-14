@@ -25,6 +25,7 @@ if (!defined('ALISER_ADMIN')) {
 
 // Incluir archivo de conexión a base de datos
 require_once __DIR__ . '/includes/db.php';
+require_once __DIR__ . '/includes/auth.php';
 
 // Procesar formulario de login
 $error_message = '';
@@ -32,67 +33,69 @@ $success_message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Limpiar y validar datos de entrada
-    $username = isset($_POST['username']) ? trim($_POST['username']) : '';
-    $password = isset($_POST['password']) ? trim($_POST['password']) : ''; // Trim también en password para evitar espacios accidentales
+    $usuario = isset($_POST['usuario']) ? trim((string) $_POST['usuario']) : '';
+    $password_ingresada = isset($_POST['password']) ? (string) $_POST['password'] : '';
     
     // Validar que los campos no estén vacíos después del trim
-    if (empty($username) || empty($password)) {
+    if ($usuario === '' || $password_ingresada === '') {
         $error_message = 'Por favor, completa todos los campos.';
     } else {
         try {
             // Obtener instancia de la base de datos
-            $db = getDB();
+            $db = Database::getInstance()->getConnection();
             
             // Consulta preparada para buscar el usuario (case-sensitive exacto)
-            $sql = "SELECT id, nombre_completo, usuario, password, email, rol, activo 
-                    FROM usuarios_admin 
-                    WHERE usuario = :usuario AND activo = 1 
+            $sql = "SELECT id, usuario, password, rol
+                    FROM usuarios_admin
+                    WHERE usuario = :usuario
                     LIMIT 1";
             
             // Ejecutar consulta con prepared statement
-            $user = $db->fetchOne($sql, ['usuario' => $username]);
-            
-            // Debug temporal (remover en producción)
-            if (!$user) {
-                error_log("Usuario no encontrado: " . $username);
-            } else {
-                error_log("Usuario encontrado: " . $user['usuario']);
-                error_log("Hash en BD: " . substr($user['password'], 0, 20) . "...");
-            }
+            $stmt = $db->prepare($sql);
+            $stmt->execute([':usuario' => $usuario]);
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
             
             // Verificar si el usuario existe
             if (!$user) {
-                $error_message = 'Usuario o contraseña incorrectos.';
+                $error_message = 'Credenciales incorrectas. Por favor, verifica tus datos.';
             } else {
                 // Verificar la contraseña
-                $passwordHash = $user['password'];
+                $hash_db = (string) ($user['password'] ?? '');
                 
                 // Verificar que el hash no esté vacío
-                if (empty($passwordHash)) {
-                    error_log("Error: Hash de contraseña vacío para usuario: " . $username);
+                if ($hash_db === '') {
+                    error_log("Error: Hash de contraseña vacío para usuario: " . $usuario);
                     $error_message = 'Error en la configuración del usuario. Contacta al administrador.';
                 } else {
-                    // Verificar contraseña con password_verify
-                    if (password_verify($password, $passwordHash)) {
+                    if (password_verify($password_ingresada, $hash_db)) {
                         // Iniciar sesión
                         $_SESSION['admin_logged_in'] = true;
                         $_SESSION['admin_id'] = $user['id'];
-                        $_SESSION['admin_nombre'] = $user['nombre_completo'];
+                        $_SESSION['admin_nombre'] = $user['usuario'];
                         $_SESSION['admin_usuario'] = $user['usuario'];
-                        $_SESSION['admin_email'] = $user['email'];
-                        $_SESSION['admin_rol'] = $user['rol'];
+                        $_SESSION['admin_rol'] = normalizeRoles((string)$user['rol']);
                         
-                        // Actualizar último acceso
-                        $updateSql = "UPDATE usuarios_admin SET ultimo_acceso = NOW() WHERE id = :id";
-                        $db->query($updateSql, ['id' => $user['id']]);
+                        // Actualizar ultimo acceso con compatibilidad temporal de estructura.
+                        try {
+                            $updateSql = "UPDATE usuarios_admin SET ultimo_login = NOW() WHERE id = :id";
+                            $updateStmt = $db->prepare($updateSql);
+                            $updateStmt->execute([':id' => $user['id']]);
+                        } catch (PDOException $e) {
+                            error_log('No fue posible actualizar ultimo_login: ' . $e->getMessage());
+                            try {
+                                $legacyUpdateSql = "UPDATE usuarios_admin SET ultimo_acceso = NOW() WHERE id = :id";
+                                $legacyUpdateStmt = $db->prepare($legacyUpdateSql);
+                                $legacyUpdateStmt->execute([':id' => $user['id']]);
+                            } catch (PDOException $legacyE) {
+                                error_log('No fue posible actualizar ultimo_acceso: ' . $legacyE->getMessage());
+                            }
+                        }
                         
                         // Redirigir al dashboard
                         header('Location: dashboard.php');
                         exit;
                     } else {
-                        // Contraseña incorrecta
-                        error_log("Contraseña incorrecta para usuario: " . $username);
-                        $error_message = 'Usuario o contraseña incorrectos.';
+                        $error_message = 'Credenciales incorrectas. Por favor, verifica tus datos.';
                     }
                 }
             }
@@ -101,12 +104,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Error de base de datos
             error_log('Error de autenticación: ' . $e->getMessage());
             error_log('Stack trace: ' . $e->getTraceAsString());
-            $error_message = 'Error al procesar la solicitud. Por favor, intenta nuevamente.';
+            $error_message = 'Credenciales incorrectas. Por favor, verifica tus datos.';
         } catch (Exception $e) {
             // Error general
             error_log('Error inesperado: ' . $e->getMessage());
             error_log('Stack trace: ' . $e->getTraceAsString());
-            $error_message = 'Ha ocurrido un error inesperado. Por favor, contacta al administrador.';
+            $error_message = 'Credenciales incorrectas. Por favor, verifica tus datos.';
         }
     }
 }
@@ -139,9 +142,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <!-- Formulario de Login -->
-            <form class="login-form" method="POST" action="" autocomplete="off">
+            <form class="login-form" method="POST" action="index.php" autocomplete="off">
                 <?php if (!empty($error_message)): ?>
-                    <div class="error-message">
+                    <div class="error-message error-message-shake">
                         <strong>⚠️</strong> <?php echo htmlspecialchars($error_message); ?>
                     </div>
                 <?php endif; ?>
@@ -154,17 +157,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <!-- Campo Usuario -->
                 <div class="form-group">
-                    <label for="username" class="form-label">Usuario</label>
+                    <label for="usuario" class="form-label">Usuario</label>
                     <input
                         type="text"
-                        id="username"
-                        name="username"
+                        id="usuario"
+                        name="usuario"
                         class="form-input"
                         placeholder="Ingresa tu usuario"
                         required
                         autocomplete="username"
                         aria-required="true"
                         aria-label="Campo de usuario"
+                        value="<?php echo isset($usuario) ? htmlspecialchars($usuario) : ''; ?>"
                     >
                 </div>
 
@@ -195,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="login-footer">
                 <p class="login-footer-text">
                     Sistema de administración <strong>ALISER</strong><br>
-                    <small style="font-size: 0.75rem; color: var(--color-gray);">
+                    <small class="login-footer-note">
                         © <?php echo date('Y'); ?> Todos los derechos reservados
                     </small>
                 </p>
