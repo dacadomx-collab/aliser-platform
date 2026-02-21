@@ -20,7 +20,7 @@ try {
     } else {
         echo "ℹ Tabla vacía o sin registros de administradores.<br>";
     }
-
+    //test para subir a github   
     // 2. Probar Tabla: vacantes (Siguiendo DB_STRUCTURE.md)
     echo "<h3>2. Verificando Tabla: vacantes</h3>";
     $stmtVac = $db->query("SELECT id, titulo, sucursal, estatus FROM vacantes LIMIT 1");
