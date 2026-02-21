@@ -19,7 +19,6 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: ${{ secrets.REMOTE_PATH }}
-        port: 21
-        # GreenGeeks requiere explicit FTPS o TLS a veces, esto asegura compatibilidad:
-        secure: false
+        server-dir: ./ 
+        # Cambiamos 'secure' por 'protocol' que es el estándar actual
+        protocol: ftp
