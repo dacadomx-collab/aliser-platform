@@ -1,0 +1,25 @@
+# Bloquear acceso a archivos sensibles por URL
+<FilesMatch "^\.env|.*\.log$|error_log">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "^(config\.php|auth_check\.php|\.env)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Evitar que vean el contenido de las carpetas
+Options -Indexes
+
+# Bloquear acceso a archivos sensibles (config, txt, logs)
+<FilesMatch "\.(config|txt|log|ini|db|sql)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Ocultar información del servidor
+ServerSignature Off
+
+# Desactivar cabecera de versión de PHP
+Header unset X-Powered-By

@@ -52,4 +52,6 @@ Constante de Seguridad: Siempre definir define('ALISER_ADMIN', true); antes de l
 
 Rutas Absolutas en Local: En entorno XAMPP, priorizar rutas completas para evitar fallos de inclusión por niveles de carpeta.
 
+NUEVA REGLA DE ORO - SEGURIDAD ALISER:
+"Todo código generado para ALISER debe cumplir con la Seguridad Oro. Esto incluye: (1) Uso de sentencias preparadas PDO sin excepción. (2) Validación estricta de columnas SQL para evitar errores 1054. (3) Implementación de Bcrypt para contraseñas. (4) Protección de formularios con tokens CSRF. (5) Manejo de errores con try-catch que oculte detalles técnicos al usuario final. No generes código de formularios o bases de datos que no incluya estas capas de seguridad."
 

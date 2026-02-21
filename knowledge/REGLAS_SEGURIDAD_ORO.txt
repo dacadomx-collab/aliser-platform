@@ -1,0 +1,40 @@
+Infraestructura Blindada: 
+
+
+Blindaje .htaccess: Bloquear acceso a archivos .env, .log, .sql, y config.php.
+
+
+Permisos uploads: Configurar con 0755 y desactivar ejecución de scripts PHP.
+
+
+Conexión Espejo (Anti-1054): 
+
+
+PDO Obligatorio: Uso estricto de sentencias preparadas para prevenir SQL Injection.
+
+
+Validación de Columnas: El GEM debe validar cada nombre de variable contra el esquema SQL antes de generar código para evitar el error 1054.
+
+
+Autenticación Robusta: 
+
+
+Bcrypt: Uso de password_hash() para todas las credenciales.
+
+
+Middleware auth_check.php: Validador de sesión central para el área administrativa.
+
+
+Tokens CSRF: Implementación en todos los formularios de envío de datos.
+
+
+Defensa Activa: 
+
+
+Troll Mode: Redirección a troll.php al detectar patrones de ataque como DROP o <script>.
+
+
+Logs de Auditoría: Registro de fallos de IP en seguridad.log.
+
+
+Sanitización de Archivos: Validar el tipo MIME real y renombrar archivos con Hash (MD5/SHA1) antes de almacenarlos.
