@@ -10,10 +10,10 @@ if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['HTTP_HOST'] == 'localhos
     define('DB_PASS', '');
 } else {
     // CONFIGURACIÓN PRODUCCIÓN (GREENGEEKS)
-    define('DB_HOST', 'localhost'); // Usualmente localhost en cPanel
-    define('DB_NAME', 'u12345_aliser'); // Reemplaza con el nombre real en cPanel
-    define('DB_USER', 'u12345_admin'); // Reemplaza con el usuario real en cPanel
-    define('DB_PASS', 'w;h-h&)YTTm0q)9R'); 
+    define('DB_HOST', 'localhost'); 
+    define('DB_NAME', 'tecnidepot_aliser'); 
+    define('DB_USER', 'tecnidepot_aliserDB'); 
+    define('DB_PASS', '0l@{F0w?cRS$w&nN'); 
 }
 // Colores Corporativos ALISER para uso en constantes si fuera necesario
 define('COLOR_VERDE', '#256737');
