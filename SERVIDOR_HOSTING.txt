@@ -1,8 +1,24 @@
+URL:  https://aliser.tecnidepot.com/
 
 FTP
-/home/tecnidepot/public_html/aliser.tecnidepot.com
-LogIn: aliser@aliser.tecnidepot.com
-pass: w;h-h&)YTTm0q)9R
+FTP Username: aliser@aliser.tecnidepot.com
+FTP server: ftp.tecnidepot.com
+FTP & explicit FTPS port:  21
+pass: vq)}9Ed7BRwJL=0~
+Path: /home/tecnidepot/public_html/aliser.tecnidepot.com
 
+Usuario: admin_aliser@aliser.tecnidepot.com
+Puerto: 21
 
-URL:  https://aliser.tecnidepot.com/
+**********************
+SSH Access
+Generating a Public Key
+Key Name (This value defaults to “id_rsa”.): id_rsa
+pass: d=}PCk[p?WxLz2%)
+Key Type: RSA
+Key Size: 2048
+**********************
+
+Database: tecnidepot_aliser
+Privileged Users: tecnidepot_aliserDB	
+pass: 0l@{F0w?cRS$w&nN
