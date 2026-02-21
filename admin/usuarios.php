@@ -1,11 +1,11 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
-require_once __DIR__ . '/includes/auth.php';
-requireRole(['MASTER']);
-
 if (!defined('ALISER_ADMIN')) {
     define('ALISER_ADMIN', true);
 }
+
+header('Content-Type: text/html; charset=utf-8');
+require_once __DIR__ . '/includes/auth.php';
+requireRole(['MASTER']);
 
 require_once __DIR__ . '/includes/db.php';
 

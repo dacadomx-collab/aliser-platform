@@ -1,0 +1,9 @@
+# ALISER - PROTECCIÓN DE NÚCLEO
+# Impide que cualquier usuario acceda a archivos .php de esta carpeta por URL
+<Files "*.php">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Deshabilitar el listado de directorios
+Options -Indexes

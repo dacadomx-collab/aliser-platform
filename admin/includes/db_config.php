@@ -1,22 +1,27 @@
-<?php
+﻿<?php
 /**
- * ALISER 2026 - Configuración de Credenciales Producidas
- * Fuente de Verdad: test_directo.php (EXITOSO)
+ * ALISER 2026 - Configuración de Conexión Híbrida
+ * Detecta automáticamente entorno Local vs Producción
  */
 
-// Evitar acceso directo
 if (!defined('ALISER_ADMIN')) {
     define('ALISER_ADMIN', true);
 }
 
-// Credenciales Validadas en GreenGeeks
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'tecnidepot_aliser');
-define('DB_USER', 'tecnidepot_aliserDB');
-define('DB_PASS', '0l@{F0w?cRS$w&nN');
-define('DB_CHARSET', 'utf8mb4');
+// DETECCIÓN DE ENTORNO
+if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['HTTP_HOST'] == 'localhost') {
+    // === CONFIGURACIÓN LOCAL (XAMPP) ===
+    define('DB_HOST', 'localhost');
+    define('DB_NAME', 'aliser_db'); // Asegúrate que este nombre coincida con tu DB en PHPMyAdmin
+    define('DB_USER', 'root');
+    define('DB_PASS', ''); 
+} else {
+    // === CONFIGURACIÓN PRODUCCIÓN (GREENGEEKS) ===
+    define('DB_HOST', 'localhost');
+    define('DB_NAME', 'tecnidepot_aliser');
+    define('DB_USER', 'tecnidepot_aliserDB');
+    define('DB_PASS', '0l@{F0w?cRS$w&nN');
+}
 
-// Colores Corporativos ALISER
-define('COLOR_VERDE', '#256737');
-define('COLOR_ARENA', '#ECD4A8');
+define('DB_CHARSET', 'utf8mb4');
 ?>
