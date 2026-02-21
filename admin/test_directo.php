@@ -1,1 +1,27 @@
-<?phperror_reporting(E_ALL);ini_set('display_errors', 1);$h = 'localhost';$d = 'tecnidepot_aliser';$u = 'tecnidepot_aliserDB';$p = &#39;0l@{F0w?cRS$w&nN';echo "<h1>PRUEBA ALISER</h1>";try {$pdo = new PDO("mysql:host=$h;dbname=$d;charset=utf8mb4", $u, $p);echo "<p style='color:green'>CONECTADO EXITOSAMENTE</p>";} catch (Exception $e) {echo "<p style='color:red'>ERROR: " . $e->getMessage() . "</p>";}?>
+<?php
+
+error_reporting(E_ALL);
+
+ini_set('display_errors', 1);
+
+$h = 'localhost';
+
+$d = 'tecnidepot_aliser';
+
+$u = 'tecnidepot_aliserDB';
+
+$p = '0l@{F0w?cRS$w&nN';
+
+try {
+
+$conn = new PDO("mysql:host=$h;dbname=$d", $u, $p);
+
+echo "CONECTADO EXITOSAMENTE";
+
+} catch (Exception $e) {
+
+echo "ERROR: " . $e->getMessage();
+
+}
+
+?>
