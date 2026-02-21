@@ -1,21 +1,35 @@
 <?php
+// ALISER - DIAGNÓSTICO DE EMERGENCIA
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 define('ALISER_ADMIN', true);
-require_once 'includes/db.php';
+
+echo "Buscando db.php en: " . __DIR__ . '/admin/includes/db.php <br>';
+
+if (file_exists(__DIR__ . '/admin/includes/db.php')) {
+    require_once __DIR__ . '/admin/includes/db.php';
+    echo "✅ Archivo de conexión encontrado.<br>";
+} else {
+    die("❌ ERROR: No se encuentra el archivo admin/includes/db.php en esta ruta.");
+}
 
 $usuario = 'admin'; 
-$nueva_pass = 'Aliser2026!'; // ASEGÚRATE DE USAR ESTA
+$nueva_pass = 'Aliser2026!'; 
 $hash = password_hash($nueva_pass, PASSWORD_BCRYPT);
 
 try {
-    $pdo = Database::getInstance()->getConnection();
+    $db = Database::getInstance();
+    $pdo = $db->getConnection();
+    
     $stmt = $pdo->prepare("UPDATE usuarios_admin SET password = ? WHERE usuario = ?");
     $stmt->execute([$hash, $usuario]);
 
     if ($stmt->rowCount() > 0) {
-        echo "✅ Password de 'admin' actualizada con Seguridad Oro.";
+        echo "<h2>✅ ÉXITO: Password actualizada.</h2>";
     } else {
-        echo "⚠️ No se encontró el usuario o la password ya era la misma.";
+        echo "⚠️ AVISO: El usuario no existe o la contraseña ya era la misma.";
     }
 } catch (Exception $e) {
-    echo "Error: " . $e->getMessage();
+    echo "❌ ERROR DE BD: " . $e->getMessage();
 }
