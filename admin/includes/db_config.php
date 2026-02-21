@@ -15,7 +15,7 @@ if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['HTTP_HOST'] == 'localhos
     define('DB_USER', 'u12345_admin'); // Reemplaza con el usuario real en cPanel
     define('DB_PASS', 'w;h-h&)YTTm0q)9R'); 
 }
-
+//prueba para verificar que el archivo se carga correctamente   
 // Colores Corporativos ALISER para uso en constantes si fuera necesario
 define('COLOR_VERDE', '#256737');
 define('COLOR_ARENA', '#ECD4A8');
