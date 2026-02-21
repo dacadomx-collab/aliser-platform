@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-// Puedes ajustar el trigger según tus necesidades, por ejemplo, a un branch específico o a tags.
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
