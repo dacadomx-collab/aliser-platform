@@ -1,4 +1,5 @@
 name: 🚀 Deploy Aliser to GreenGeeks
+
 on:
   push:
     branches:
@@ -19,5 +20,6 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         server-dir: ${{ secrets.REMOTE_PATH }}
-        protocol: ftps # Agregamos esto para mayor seguridad
         port: 21
+        # GreenGeeks requiere explicit FTPS o TLS a veces, esto asegura compatibilidad:
+        secure: false
