@@ -12,8 +12,19 @@ require_once __DIR__ . '/includes/db.php';
 
 function buildOrigin(): string
 {
-    $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-    $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    $forwardedProto = (string)($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '');
+    $forwardedHost = (string)($_SERVER['HTTP_X_FORWARDED_HOST'] ?? '');
+    $httpsOn = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+    $scheme = ($forwardedProto !== '') ? $forwardedProto : ($httpsOn ? 'https' : 'http');
+
+    $host = $_SERVER['HTTP_HOST'] ?? '';
+    if ($forwardedHost !== '') {
+        $host = explode(',', $forwardedHost)[0];
+    }
+    if ($host === '') {
+        $host = 'localhost';
+    }
+
     return $scheme . '://' . $host;
 }
 

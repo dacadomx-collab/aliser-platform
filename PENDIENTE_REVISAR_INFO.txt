@@ -1,0 +1,42 @@
+Miercoles 18 febrero
+10:15 am  Oficinas ASPI
+Reunion de Necesidades
+Odoo
+MODULO completo
+
+user: gibran
+pass: Gibran1234
+
+Pendientes:
+
+1.- Mandar email de bienvenida
+2.- campos de usuario y contraseña se quedan en admin
+
+
+
+ https://twelve-ravens-join.loca.lt/frontend/promociones-public.php
+
+
+"¡Hola equipo de ALISER! 👋
+
+Es un gusto saludarlos. Les comparto el acceso a la Versión Alpha (Prueba) de nuestra nueva plataforma administrativa y el portal público de vacantes y promociones.
+
+Actualmente el sistema corre desde un servidor de desarrollo temporal para que puedan navegarlo y hacerme llegar sus comentarios:
+
+🔗 Portal Público
+https://twelve-ravens-join.loca.lt/aliser-web/frontend/index.html
+
+Cuando ingresen por primera vez a la pagina les va a pedir una contraseña la cual es: 189.143.8.146
+
+Puntos clave para su revisión:
+
+Identidad Local: Verán el mensaje motivacional de BCS integrado en el diseño.
+
+Gestión por Roles: Cada uno de ustedes tendrá un perfil específico (Talento, Bienes, Promo, etc.).
+
+Interactividad: Prueben la cuenta regresiva de las promociones y la visualización de los flyers.
+
+Nota: Al ser una versión de prueba técnica, el enlace estará activo mientras mi estación de trabajo esté encendida. ¡Quedo atento a sus valiosos comentarios para seguir puliendo los detalles! 🌴"
+
+
+

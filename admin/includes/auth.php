@@ -1,5 +1,21 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
+    $forwardedProto = (string)($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '');
+    $httpsOn = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+    $secure = ($forwardedProto === 'https') || $httpsOn;
+
+    // Cookie params must be set before session_start.
+    // LocalTunnel terminates TLS, so we also honor X-Forwarded-Proto=https.
+    if (PHP_VERSION_ID >= 70300) {
+        session_set_cookie_params([
+            'lifetime' => 0,
+            'path' => '/',
+            'secure' => $secure,
+            'httponly' => true,
+            'samesite' => 'Lax'
+        ]);
+    }
+
     session_start();
 }
 
