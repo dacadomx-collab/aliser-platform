@@ -21,10 +21,10 @@ class Database {
                 PDO::ATTR_EMULATE_PREPARES   => false,
             ];
             $this->pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
-        } catch (PDOException $e) {
-            error_log("ALISER_DB_ERROR: " . $e->getMessage());
-            die("Error de sistema: La conexión no pudo establecerse.");
-        }
+            } catch (PDOException $e) {
+                // Esto nos dirá el error real en pantalla
+                die("DEBUG ERROR: " . $e->getMessage());
+            }    
     }
     
     public static function getInstance() {
