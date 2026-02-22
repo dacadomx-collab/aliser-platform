@@ -22,3 +22,10 @@ Key Size: 2048
 Database: tecnidepot_aliser
 Privileged Users: tecnidepot_aliserDB	
 pass: 0l@{F0w?cRS$w&nN
+
+**********************
+PÚBLICO (Clientes) 
+https://aliser.tecnidepot.com/index.html
+
+ADMIN (Santuario)
+https://tecnidepot.com/aliser/admin/index.php

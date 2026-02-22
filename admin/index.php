@@ -1,4 +1,10 @@
 <?php
+// ALISER - DEPURACIÓN DE EMERGENCIA
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Prueba de vida
+// echo "El script se está ejecutando...";
 /**
  * ALISER - Login Administrativo (Seguridad Oro)
  * VERIFICACIÓN: Uso de Singleton y Bcrypt.
