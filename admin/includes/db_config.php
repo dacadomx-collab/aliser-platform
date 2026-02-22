@@ -11,13 +11,13 @@ if (!defined('ALISER_ADMIN')) {
 // DETECCIÓN DE ENTORNO
 if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['HTTP_HOST'] == 'localhost') {
     // === CONFIGURACIÓN LOCAL (XAMPP) ===
-    define('DB_HOST', 'localhost');
+    define('DB_HOST', '127.0.0.1');
     define('DB_NAME', 'aliser_db'); // Asegúrate que este nombre coincida con tu DB en PHPMyAdmin
     define('DB_USER', 'root');
     define('DB_PASS', ''); 
 } else {
     // === CONFIGURACIÓN PRODUCCIÓN (GREENGEEKS) ===
-    define('DB_HOST', 'localhost');
+    define('DB_HOST', '127.0.0.1');
     define('DB_NAME', 'tecnidepot_aliser');
     define('DB_USER', 'tecnidepot_aliserDB');
     define('DB_PASS', '0l@{F0w?cRS$w&nN');
