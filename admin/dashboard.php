@@ -11,8 +11,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/includes/auth.php';
-requireAdminLogin();
+if (!isset($_SESSION['admin_id'])) {
+    header('Location: index.php');
+    exit;
+}
 
 if (isset($_GET['logout']) && $_GET['logout'] === '1') {
     $_SESSION = array();
@@ -36,8 +38,16 @@ if (isset($_GET['logout']) && $_GET['logout'] === '1') {
 }
 
 $admin_nombre = isset($_SESSION['admin_nombre']) ? $_SESSION['admin_nombre'] : 'Usuario';
-$admin_roles = getCurrentAdminRoles();
 $admin_usuario = isset($_SESSION['admin_usuario']) ? $_SESSION['admin_usuario'] : '';
+
+$admin_roles_raw = (string)($_SESSION['admin_rol'] ?? '');
+$admin_roles_parts = preg_split('/\s*,\s*/', $admin_roles_raw, -1, PREG_SPLIT_NO_EMPTY);
+$admin_roles = array_values(array_unique(array_map(static function ($r) {
+    return strtoupper(trim((string)$r));
+}, $admin_roles_parts)));
+if (empty($admin_roles)) {
+    $admin_roles = ['SOPORTE'];
+}
 
 $modulePermissions = [
     'vacantes.php' => ['MASTER', 'TALENTO'],

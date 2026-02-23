@@ -1,8 +1,10 @@
 ﻿<?php
+session_start();
+ob_start();
+
 define('ALISER_ADMIN', true);
 require_once __DIR__ . '/includes/db.php';
 
-session_start();
 
 if (isset($_SESSION['admin_id'])) {
     header('Location: dashboard.php');
@@ -19,28 +21,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($userInput !== '' && $passInput !== '') {
         try {
             $db = Database::getInstance();
-            $sql = 'SELECT id, usuario, password, nombre, rol FROM usuarios_admin WHERE usuario = :user LIMIT 1';
+            $sql = 'SELECT id, usuario, password, nombre_completo, rol FROM usuarios_admin WHERE usuario = :user LIMIT 1';
             $admin = $db->fetchOne($sql, ['user' => $userInput]);
 
             if ($admin && password_verify($passInput, (string)$admin['password'])) {
                 session_regenerate_id(true);
                 $_SESSION['admin_id'] = (int)$admin['id'];
-                $_SESSION['admin_user'] = (string)$admin['usuario'];
-                $_SESSION['admin_nombre'] = (string)$admin['nombre'];
+                $_SESSION['admin_usuario'] = (string)$admin['usuario'];
+                $_SESSION['admin_nombre'] = (string)$admin['nombre_completo'];
                 $_SESSION['admin_rol'] = (string)$admin['rol'];
 
-                $db->query('UPDATE usuarios_admin SET ultimo_login = NOW() WHERE id = :id', [
-                    'id' => (int)$admin['id'],
-                ]);
-
+                session_write_close();
                 header('Location: dashboard.php');
                 exit;
             }
 
             $error = $deniedMessage;
         } catch (Throwable $e) {
-            error_log('Login ALISER error: ' . $e->getMessage());
-            $error = $deniedMessage;
+            die('ERROR TECNICO: ' . $e->getMessage());
         }
     } else {
         $error = $deniedMessage;
@@ -205,3 +203,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </body>
 </html>
+
+
+

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if (session_status() === PHP_SESSION_NONE) {
     $forwardedProto = (string)($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '');
     $httpsOn = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
@@ -61,7 +61,7 @@ function normalizeRoles($rolesRaw): string
 
 function requireAdminLogin(): void
 {
-    if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {
+    if (!isset($_SESSION['admin_id']) || (int)$_SESSION['admin_id'] <= 0) {
         header('Location: index.php');
         exit;
     }
@@ -105,3 +105,5 @@ function requireRole(array $allowedRoles): void
         exit;
     }
 }
+
+
