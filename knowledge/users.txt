@@ -1,3 +1,2 @@
-Usuario: admin
-Password: Aliser2026!
-
+user: admin 
+pass: *41i53R.26

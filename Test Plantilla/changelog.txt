@@ -1,0 +1,92 @@
+Date:    23-06-2021
+Version: 2.0.4
+===================
+1. Updated to latest Bootstrap v5.0.2
+2. Fixed: Minor CSS Issue
+
+Date:    01-03-2021
+Version: 2.0.3
+===================
+1. Updated Preview Page
+2. Fixed: Mega Menu Issue
+3. Fixed: Minor CSS Issue
+4. Improved: Responsive
+
+Date:    08-02-2021
+Version: 2.0.2
+===================
+1. Added: New Two Home Version
+2. Updated Preview Page
+3. Fixed: Minor CSS Issue
+4. Improved: Responsive
+
+Date:    10-01-2021
+Version: 2.0.1
+===================
+1. Added: New Two Home Version
+2. Fixed: Minor CSS Issue
+3. Improved: Responsive
+
+
+Date:    28-12-2020
+Version: 1.0.10
+===================
+1. Updated to latest Bootstrap version
+2. Tooltip issue fixed
+
+
+Date:    01-10-2020
+Version: 1.0.8
+===================
+1. Updated: Cart Page
+2. Updated: Wishlist Page
+3. Updated: Header Search bar for the mobile responsive
+4. Changed: Minor CSS issues
+
+
+Date:    22-09-2020
+Version: 1.0.7
+===================
+1. Updated: Bootstrap Latest Version(5.0.0)
+2. Fixed: Minor CSS Issue
+3. Improved: Responsive
+
+
+Date:    08-07-2020
+Version: 1.0.6
+===================
+1. Added: New Home Version
+2. Added: Instagram Newsfeed
+3. Fixed: Minor CSS Issue
+4. Improved: Responsive
+
+Date   : 16 May, 2020
+Version: 1.0.5
+========================
+1. Compatible: IE Explorer Browser
+2. Fixed: JS Issue
+3. Fixed: FAQ Page
+
+Date   : 03 May, 2020
+Version: 1.0.4
+========================
+1. Fixed: Categories Menu
+2. Fixed: CSS Issue with responsive Device
+
+Date   : 28 April, 2020
+Version: 1.0.3
+========================
+1. Updated: jQuery Version 3.5.0
+2. Fixed: Mini Cart Overlay Issue
+
+Date   : 16 April, 2020
+Version: 1.0.2
+========================
+1. Updated: Mini Cart (Off-Canvas Mini Cart Added)
+2. Fixed: Minor Css Issue
+3. Improved: Mobile View Responsive
+
+Date   : 06 April, 2020
+Version: 1.0.1
+========================
+1. Cart page update
