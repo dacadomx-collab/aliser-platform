@@ -1,0 +1,8 @@
+ALISER Proyect
+
+Local: C:\xampp\htdocs\aliser-web
+GitHub: https://github.com/dacadomx-collab/aliser-platform.git
+WEB: https://aliser.tecnidepot.com
+
+user:
+Pass:
