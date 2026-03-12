@@ -1,0 +1,16 @@
+ALISER Proyect
+
+Local: C:\xampp\htdocs\aliser-web
+GitHub: https://github.com/dacadomx-collab/aliser-platform.git
+WEB
+
+FRONT: https://tecnidepot.com/aliser/index-2.html
+BACK: https://tecnidepot.com/aliser/admin/index.php
+
+*************************************
+*************************************
+https://tecnidepot.com/aliser/admin/index.php
+user: admin
+Pass: Aliser2026!
+*************************************
+*************************************
